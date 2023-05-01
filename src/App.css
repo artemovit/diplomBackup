@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+*{
+    
+}
+h1{
+    margin: 3%;
+    font-weight: 600;
+    font-size: 48px;
+}
+
+h2{
+    margin: 3%;
+    font-size: 24px;
+}
+
+.imgSpect{
+    height: auto;
+    width: 25%;
+    border-radius: 5px;
+}
+
+.product-wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.product-item {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    transition: .3s ease-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+
+.product-item img {
+    
+    height: auto;
+    width: 100%;
+    border-radius: 5px;
+ }
+
+ .price{ 
+        font-size: 16px;
+        color: #EE3224;
+        margin-bottom: 12px;
+ }
