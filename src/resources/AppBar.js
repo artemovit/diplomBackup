@@ -43,7 +43,7 @@ export default function () {
 
                     <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
                         <MenuItem onClick={handleClose}>История театра</MenuItem>
-                        <MenuItem onClick={handleClose}>Николай Павлович <span color='red'>Акимов</span></MenuItem>
+                        <MenuItem onClick={handleClose}>Николай Павлович <span color='red'> Акимов</span></MenuItem>
                         <MenuItem onClick={handleClose}>Звёзды Акимовской сцены</MenuItem>
                         <MenuItem onclick={handleClose}>Татьяна Сергеевна Казакова</MenuItem>
                         <MenuItem onClick={handleClose}>Документы</MenuItem>
