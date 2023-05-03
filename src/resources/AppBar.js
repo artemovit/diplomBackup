@@ -41,14 +41,14 @@ export default function () {
                     <Button class="header_item">Новости</Button>
                     <Button class="header_item">Контакты</Button>
 
-                    <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)}>
+                    <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
                         <MenuItem onClick={handleClose}>История театра</MenuItem>
                         <MenuItem onClick={handleClose}>Николай Павлович <span color='red'>Акимов</span></MenuItem>
                         <MenuItem onClick={handleClose}>Звёзды Акимовской сцены</MenuItem>
                         <MenuItem onclick={handleClose}>Татьяна Сергеевна Казакова</MenuItem>
                         <MenuItem onClick={handleClose}>Документы</MenuItem>
                     </Menu>
-                    <Menu id="ZritelyamMenu" anchorE2={anchorE2} keepMounted open={Boolean(anchorE2)}>
+                    <Menu id="ZritelyamMenu" anchorEl={anchorE2} keepMounted open={Boolean(anchorE2)} onClose={handleClose}>
                         <MenuItem onClick={handleClose}>Покупка и возврат билетов</MenuItem>
                         <MenuItem onClick={handleClose}>Правила посещения театра</MenuItem>
                     </Menu>
