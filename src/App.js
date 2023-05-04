@@ -1,6 +1,6 @@
 import './App.css';
 import AppBar from './resources/AppBar';
-import FooterBar from './FooterBar';
+import FooterBar from './resources/FooterBar';
 
 function App() {
   return (
