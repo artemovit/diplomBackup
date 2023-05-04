@@ -19,6 +19,27 @@ const Item = styled(Paper)(({ theme }) => ({
     justifyContent: 'center'
 }));
 
+const ItemSpect = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: '#EE3224',
+    display: 'flex',
+    justifyContent: 'center',
+    border: 'none',
+    margin: '18px'
+})
+);
+
+const ItemAfisha = styled(Paper)(({theme}) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: 'black',
+    display: 'flex',
+    justifyContent: 'center',
+    border: 'none',
+    margin: '10px'
+}))
+
 
 export default function index() {
 
@@ -27,33 +48,40 @@ export default function index() {
             <h1>Афиша</h1>
             <h2>Ближайшие спектакли</h2>
 
-
-            <div class="product-wrapper">
+            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
+                <ItemSpect>
                 <div class="product-item">
                     <img src={testPhoto}></img>
                     <h3>Бешеные деньги</h3>
                     <span class="price">28 ноября</span>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemSpect>
+                <ItemSpect>
                 <div class="product-item">
                     <img src={testPhoto}></img>
-                    <h3>Краткий курс счастливой жизни</h3>
-                    <span class="price">29 ноября</span>
+                    <h3>Бешеные деньги</h3>
+                    <span class="price">28 ноября</span>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemSpect>
+                <ItemSpect>
                 <div class="product-item">
                     <img src={testPhoto}></img>
-                    <h3>Синичкin. Театральное безумство</h3>
-                    <span class="price">30 ноября</span>
+                    <h3>Бешеные деньги</h3>
+                    <span class="price">28 ноября</span>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemSpect>
+                <ItemSpect>
                 <div class="product-item">
                     <img src={testPhoto}></img>
-                    <h3>Всё о Еве</h3>
-                    <span class="price">30 ноября</span>
+                    <h3>Бешеные деньги</h3>
+                    <span class="price">28 ноября</span>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
-            </div>
+                </ItemSpect>
+            </Grid>
 
             <h2>Афиша на месяц</h2>
 
@@ -64,7 +92,8 @@ export default function index() {
                 <Item>Февраль</Item>
             </Grid>
 
-            <div class="afisha_container">
+            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
+                <ItemAfisha>
                 <div class="afisha_mouth">
                     <div class="afisha_item"><span>28</span>ноября</div>
                     <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
@@ -72,6 +101,8 @@ export default function index() {
                     <div class="afisha_item"><img src={Pushka} /></div>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemAfisha>
+                <ItemAfisha>
                 <div class="afisha_mouth">
                     <div class="afisha_item"><span>28</span>ноября</div>
                     <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
@@ -79,6 +110,8 @@ export default function index() {
                     <div class="afisha_item"><img src={Pushka} /></div>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemAfisha>
+                <ItemAfisha>
                 <div class="afisha_mouth">
                     <div class="afisha_item"><span>28</span>ноября</div>
                     <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
@@ -86,6 +119,8 @@ export default function index() {
                     <div class="afisha_item"><img src={Pushka} /></div>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemAfisha>
+                <ItemAfisha>
                 <div class="afisha_mouth">
                     <div class="afisha_item"><span>28</span>ноября</div>
                     <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
@@ -93,6 +128,8 @@ export default function index() {
                     <div class="afisha_item"><img src={Pushka} /></div>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemAfisha>
+                <ItemAfisha>
                 <div class="afisha_mouth">
                     <div class="afisha_item"><span>28</span>ноября</div>
                     <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
@@ -100,13 +137,8 @@ export default function index() {
                     <div class="afisha_item"><img src={Pushka} /></div>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br/>Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                </ItemAfisha>
+                <ItemAfisha>
                 <div class="afisha_mouth">
                     <div class="afisha_item"><span>28</span>ноября</div>
                     <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
@@ -114,49 +146,77 @@ export default function index() {
                     <div class="afisha_item"><img src={Pushka} /></div>
                     <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
                 </div>
+                </ItemAfisha>
+                <ItemAfisha>
+                <div class="afisha_mouth">
+                    <div class="afisha_item"><span>28</span>ноября</div>
+                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                    <div class="afisha_item">19:00</div>
+                    <div class="afisha_item"><img src={Pushka} /></div>
+                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                </div>
+                </ItemAfisha>
+                <ItemAfisha>
+                <div class="afisha_mouth">
+                    <div class="afisha_item"><span>28</span>ноября</div>
+                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                    <div class="afisha_item">19:00</div>
+                    <div class="afisha_item"><img src={Pushka} /></div>
+                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                </div>
+                </ItemAfisha>
 
-
-            </div>
+            </Grid>
 
             <h2>Абонементы</h2>
-            <div class = "abonement">
-            <div class="abonement_item">
-            <img src={testAbonementPhoto}/>
+
+            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
+                <ItemSpect>
+                <div class="abonement_item">
+                    <img src={testAbonementPhoto} />
                     <h3>PRO театр</h3>
-                    <span class = "abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br/>
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br/>
+                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                         “Первая среди звёзд” - 15 марта 2023 г.
-                        </span>
-                        <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-            </div>
-            <div class="abonement_item">
-                <img src={testAbonementPhoto}/>
+                    </span>
+                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    </div>
+                </ItemSpect>
+                <ItemSpect>
+                <div class="abonement_item">
+                    <img src={testAbonementPhoto} />
                     <h3>PRO театр</h3>
-                    <span class = "abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br/>
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br/>
+                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                         “Первая среди звёзд” - 15 марта 2023 г.
-                        </span>
-                        <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-            </div>
-            <div class="abonement_item">
-            <img src={testAbonementPhoto}/>
+                    </span>
+                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    </div>
+                </ItemSpect>
+                <ItemSpect>
+                <div class="abonement_item">
+                    <img src={testAbonementPhoto} />
                     <h3>PRO театр</h3>
-                    <span class = "abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br/>
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br/>
+                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                         “Первая среди звёзд” - 15 марта 2023 г.
-                        </span>
-                        <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-            </div>
-            <div class="abonement_item">
-            <img src={testAbonementPhoto}/>
+                    </span>
+                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    </div>
+                </ItemSpect>
+                <ItemSpect>
+                <div class="abonement_item">
+                    <img src={testAbonementPhoto} />
                     <h3>PRO театр</h3>
-                    <span class = "abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br/>
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br/>
+                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                         “Первая среди звёзд” - 15 марта 2023 г.
-                        </span>
-                        <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-            </div>
-        </div>
+                    </span>
+                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    </div>
+                </ItemSpect>
+                </Grid>
+            
         </div>
     );
 }

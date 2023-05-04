@@ -1,13 +1,17 @@
 import React from 'react'
 import logo from './images/logo.png'
 import './AppBarStyle.css'
-import { BottomNavigation, Button, Switch } from '@mui/material'
+import {Button} from '@mui/material'
 import { Menu } from '@mui/material'
 import { MenuItem } from '@mui/material'
 
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from '../pages/index';
 import Repertuar from '../pages/repertuar'
+import Artists from '../pages/artists'
+import History from '../pages/about/history'
+
+
 
 export default function () {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -32,8 +36,8 @@ export default function () {
 
                     <Button href="/" class="header_item">Афиша</Button>
                     
-                    <Button href="repertuar" class="header_item" Link to = "repertuar">Репертуар</Button>
-                    <Button class="header_item">Артисты</Button>
+                    <Button href="repertuar" class="header_item">Репертуар</Button>
+                    <Button class="header_item" href="artists">Артисты</Button>
                     <Button class="header_item" onClick={handleClick}>О театре</Button>
                     <div class="header_item headerButton"><a href="#"><img src={logo} /></a></div>
                     <Button class="header_item">Информация для МГН</Button>
@@ -59,6 +63,8 @@ export default function () {
             <Routes>
                 <Route path="/" element={<Home/>} />
                 <Route path="repertuar" element={<Repertuar/>}/>
+                <Route path="artists" element={<Artists/>}/>
+                <Route path="about/history" element={<History/>}/>
             </Routes>
             </BrowserRouter>
         </div >
