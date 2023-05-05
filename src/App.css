@@ -10,7 +10,7 @@ h1{
 
 h2{
     margin: 3%;
-    font-size: 29px;
+    font-size: 20px;
 }
 
 .imgSpect{
@@ -33,6 +33,15 @@ h2{
     flex-direction: column;
     align-items: center;
 }
+.day_afisha{
+    color: #EE3224;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+}
  
 
 .product-item img {
@@ -51,6 +60,37 @@ h2{
  .mouth_repertuar{
     display: flex;
     justify-content: center;
+}
+
+.textHistory{
+    display: grid;
+    margin:90px;
+}
+
+.textHistory img{
+    margin:auto;
+}
+
+.error{
+    display: flex;
+    justify-content: center;
+}
+
+.buy_button{
+        padding:10px;
+        font-size:20px;
+        background: #1B1D36;
+        color: #F1F1F5;
+        border: none;
+        margin-left:10px;
+        text-align: center;
+        border-radius: 16px;
+}
+
+.output{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
 }
 
 /* Перписать этот старый пиздец */
@@ -81,12 +121,7 @@ h2{
 }
 span{
     color: #EE3224;
-    align-content: center;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    text-align: center;
-    font-size: 40px;
+    font-size: 15px;
 }
 
 .abonement{

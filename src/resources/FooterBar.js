@@ -21,6 +21,15 @@ const Footer = () => {
       }}>
         © 1991-2023 Санкт-Петербургский театр Комедии имени Н. П. Акимова
       </h1>
+      <h2 style={{
+        fontSize: "15px",
+        color: "#84848C",
+        marginTop: "-50px"
+      }}>
+        город Санкт-Петербург, Невский проспект, дом 56 191023
+        <br/>
+        admin@akimovkomedia.ru
+      </h2>
       <Container>
         <Row>
           <Column>

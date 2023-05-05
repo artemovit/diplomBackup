@@ -30,7 +30,7 @@ const ItemSpect = styled(Paper)(({ theme }) => ({
 })
 );
 
-const ItemAfisha = styled(Paper)(({theme}) => ({
+const ItemAfisha = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: 'black',
@@ -50,36 +50,36 @@ export default function index() {
 
             <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
                 <ItemSpect>
-                <div class="product-item">
-                    <img src={testPhoto}></img>
-                    <h3>Бешеные деньги</h3>
-                    <span class="price">28 ноября</span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="product-item">
+                        <img src={testPhoto}></img>
+                        <h3>Бешеные деньги</h3>
+                        <span class="price">28 ноября</span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemSpect>
                 <ItemSpect>
-                <div class="product-item">
-                    <img src={testPhoto}></img>
-                    <h3>Бешеные деньги</h3>
-                    <span class="price">28 ноября</span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="product-item">
+                        <img src={testPhoto}></img>
+                        <h3>Бешеные деньги</h3>
+                        <span class="price">28 ноября</span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemSpect>
                 <ItemSpect>
-                <div class="product-item">
-                    <img src={testPhoto}></img>
-                    <h3>Бешеные деньги</h3>
-                    <span class="price">28 ноября</span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="product-item">
+                        <img src={testPhoto}></img>
+                        <h3>Бешеные деньги</h3>
+                        <span class="price">28 ноября</span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemSpect>
                 <ItemSpect>
-                <div class="product-item">
-                    <img src={testPhoto}></img>
-                    <h3>Бешеные деньги</h3>
-                    <span class="price">28 ноября</span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="product-item">
+                        <img src={testPhoto}></img>
+                        <h3>Бешеные деньги</h3>
+                        <span class="price">28 ноября</span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemSpect>
             </Grid>
 
@@ -94,76 +94,76 @@ export default function index() {
 
             <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
                 <ItemAfisha>
-                <div class="afisha_mouth">
-                    <div class="afisha_item"><span>28</span>ноября</div>
-                    <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
-                    <div class="afisha_item">19:00</div>
-                    <div class="afisha_item"><img src={Pushka} /></div>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
-                </div>
+                    <div class="afisha_mouth">
+                        <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
+                        <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                        <div class="afisha_item">19:00</div>
+                        <div class="afisha_item"><img src={Pushka} /></div>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                    </div>
                 </ItemAfisha>
 
             </Grid>
@@ -172,51 +172,51 @@ export default function index() {
 
             <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
                 <ItemSpect>
-                <div class="abonement_item">
-                    <img src={testAbonementPhoto} />
-                    <h3>PRO театр</h3>
-                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                        “Первая среди звёзд” - 15 марта 2023 г.
-                    </span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    <div class="abonement_item">
+                        <img src={testAbonementPhoto} />
+                        <h3>PRO театр</h3>
+                        <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                            “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
+                            “Первая среди звёзд” - 15 марта 2023 г.
+                        </span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
                     </div>
                 </ItemSpect>
                 <ItemSpect>
-                <div class="abonement_item">
-                    <img src={testAbonementPhoto} />
-                    <h3>PRO театр</h3>
-                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                        “Первая среди звёзд” - 15 марта 2023 г.
-                    </span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    <div class="abonement_item">
+                        <img src={testAbonementPhoto} />
+                        <h3>PRO театр</h3>
+                        <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                            “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
+                            “Первая среди звёзд” - 15 марта 2023 г.
+                        </span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
                     </div>
                 </ItemSpect>
                 <ItemSpect>
-                <div class="abonement_item">
-                    <img src={testAbonementPhoto} />
-                    <h3>PRO театр</h3>
-                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                        “Первая среди звёзд” - 15 марта 2023 г.
-                    </span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    <div class="abonement_item">
+                        <img src={testAbonementPhoto} />
+                        <h3>PRO театр</h3>
+                        <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                            “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
+                            “Первая среди звёзд” - 15 марта 2023 г.
+                        </span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
                     </div>
                 </ItemSpect>
                 <ItemSpect>
-                <div class="abonement_item">
-                    <img src={testAbonementPhoto} />
-                    <h3>PRO театр</h3>
-                    <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                        “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                        “Первая среди звёзд” - 15 марта 2023 г.
-                    </span>
-                    <div class="afisha_item"><Button variant="contained">НЕ купить билеты</Button></div>
+                    <div class="abonement_item">
+                        <img src={testAbonementPhoto} />
+                        <h3>PRO театр</h3>
+                        <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
+                            “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
+                            “Первая среди звёзд” - 15 марта 2023 г.
+                        </span>
+                        <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
                     </div>
                 </ItemSpect>
-                </Grid>
-            
+            </Grid>
+
         </div>
     );
 }

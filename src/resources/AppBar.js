@@ -10,6 +10,10 @@ import Home from '../pages/index';
 import Repertuar from '../pages/repertuar'
 import Artists from '../pages/artists'
 import History from '../pages/about/history'
+import Stars from '../pages/about/akimovStars'
+import Contacts from '../pages/contacts'
+
+import Error from '../pages/error'
 
 
 
@@ -35,20 +39,20 @@ export default function () {
                 <div class="header_section">
 
                     <Button href="/" class="header_item">Афиша</Button>
-                    
-                    <Button href="repertuar" class="header_item">Репертуар</Button>
+                    <Button class="header_item" href="repertuar">Репертуар</Button>
                     <Button class="header_item" href="artists">Артисты</Button>
+                    
                     <Button class="header_item" onClick={handleClick}>О театре</Button>
                     <div class="header_item headerButton"><a href="#"><img src={logo} /></a></div>
                     <Button class="header_item">Информация для МГН</Button>
                     <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
                     <Button class="header_item">Новости</Button>
-                    <Button class="header_item">Контакты</Button>
+                    <Button class="header_item" href="contacts">Контакты</Button>
 
                     <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                        <MenuItem onClick={handleClose}>История театра</MenuItem>
-                        <MenuItem onClick={handleClose}>Николай Павлович <span color='red'> Акимов</span></MenuItem>
-                        <MenuItem onClick={handleClose}>Звёзды Акимовской сцены</MenuItem>
+                        <MenuItem component="a" href="about.history">История театра</MenuItem>
+                        <MenuItem>Николай Павлович Акимов</MenuItem>
+                        <MenuItem component="a" href="about.star">Звёзды Акимовской сцены</MenuItem>
                         <MenuItem onclick={handleClose}>Татьяна Сергеевна Казакова</MenuItem>
                         <MenuItem onClick={handleClose}>Документы</MenuItem>
                     </Menu>
@@ -64,7 +68,11 @@ export default function () {
                 <Route path="/" element={<Home/>} />
                 <Route path="repertuar" element={<Repertuar/>}/>
                 <Route path="artists" element={<Artists/>}/>
-                <Route path="about/history" element={<History/>}/>
+                <Route path="about.history" element={<History/>}/>
+                <Route path="about.star" element={<Stars/>}/>
+                <Route path="*" element={<Error/>}/>
+                <Route path="contacts" element={<Contacts/>}/>
+                
             </Routes>
             </BrowserRouter>
         </div >
