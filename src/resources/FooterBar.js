@@ -34,13 +34,13 @@ const Footer = () => {
         <Row>
           <Column>
             <Heading>Афиша</Heading>
-            <FooterLink href="#">Афиша на текущий месяц</FooterLink>
+            <FooterLink href="/">Афиша на текущий месяц</FooterLink>
             <FooterLink href="#">Афиша по месяцам</FooterLink>
             <FooterLink href="#">Абонементы</FooterLink>
           </Column>
           <Column>
             <Heading>Репертуар</Heading>
-            <FooterLink href="#">Текущий репертуар</FooterLink>
+            <FooterLink href="repertuar">Текущий репертуар</FooterLink>
             <FooterLink href="#">Детские спектакли</FooterLink>
           </Column>
           <Column>

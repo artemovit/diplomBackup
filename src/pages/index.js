@@ -48,7 +48,7 @@ export default function index() {
             <h1>Афиша</h1>
             <h2>Ближайшие спектакли</h2>
 
-            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
+            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none', marginTop: '3px' }}>
                 <ItemSpect>
                     <div class="product-item">
                         <img src={testPhoto}></img>
@@ -92,7 +92,7 @@ export default function index() {
                 <Item>Февраль</Item>
             </Grid>
 
-            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
+            <Grid container sx={{ justifyContent: 'center', margin: '0 px', border: 'none', width: 'none' }}>
                 <ItemAfisha>
                     <div class="afisha_mouth">
                         <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>

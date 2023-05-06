@@ -1,29 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-*{
 
-}
-h1{
+* {}
+
+h1 {
     margin: 3%;
     font-weight: 600;
     font-size: 48px;
 }
 
-h2{
+h2 {
     margin: 3%;
-    font-size: 20px;
+    font-size: 30px;
+    margin-bottom: 1px;
+    margin-top: 2%;
 }
 
-.imgSpect{
+h3 {
+    color: #000000;
+}
+
+.price {
+    font-size: 19px;
+    color: #EE3224;
+    margin-bottom: 12px;
+}
+
+.imgSpect {
     height: auto;
     width: 25%;
     border-radius: 5px;
 }
 
-.product-wrapper{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 .product-item {
     width: 300px;
     text-align: center;
@@ -33,7 +40,8 @@ h2{
     flex-direction: column;
     align-items: center;
 }
-.day_afisha{
+
+.day_afisha {
     color: #EE3224;
     align-content: center;
     display: flex;
@@ -42,52 +50,44 @@ h2{
     text-align: center;
     font-size: 40px;
 }
- 
 
 .product-item img {
-    
     height: auto;
     width: 100%;
     border-radius: 5px;
- }
+}
 
- .price{ 
-        font-size: 16px;
-        color: #EE3224;
-        margin-bottom: 12px;
- }
-
- .mouth_repertuar{
+.mouth_repertuar {
     display: flex;
     justify-content: center;
 }
 
-.textHistory{
+.textHistory {
     display: grid;
-    margin:90px;
+    margin: 90px;
 }
 
-.textHistory img{
-    margin:auto;
+.textHistory img {
+    margin: auto;
 }
 
-.error{
+.error {
     display: flex;
     justify-content: center;
 }
 
-.buy_button{
-        padding:10px;
-        font-size:20px;
-        background: #1B1D36;
-        color: #F1F1F5;
-        border: none;
-        margin-left:10px;
-        text-align: center;
-        border-radius: 16px;
+.buy_button {
+    padding: 10px;
+    font-size: 20px;
+    background: #1B1D36;
+    color: #F1F1F5;
+    border: none;
+    margin-left: 10px;
+    text-align: center;
+    border-radius: 16px;
 }
 
-.output{
+.output {
     display: flex;
     justify-content: center;
     margin: 15px;
@@ -95,62 +95,68 @@ h2{
 
 /* Перписать этот старый пиздец */
 
-.afisha_container{
+.afisha_container {
     border-bottom: 3px solid black;
 }
-.mouth{
+
+.mouth {
     margin: 0 20px;
     color: #EE3224;
     border-bottom: 3px solid black;
-} 
+}
 
-.mouth a{
-    color:#EE3224;
+.mouth a {
+    color: #EE3224;
     text-decoration: none;
 }
 
-.afisha_mouth{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.afisha_mouth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
-.afisha_item{
+
+.afisha_item {
     margin: 5px;
     padding: 5px;
 }
-span{
+
+span {
     color: #EE3224;
     font-size: 15px;
 }
 
-.abonement{
+.abonement {
     display: flex;
     justify-content: center;
-    
-  }
-  .abonement_item{
+
+}
+
+.abonement_item {
     width: 300px;
     text-align: center;
     margin: 0 auto;
     transition: .3s ease-in;
     display: flex;
     flex-direction: column;
-    
-  }
-  .abonement_item img {
-    
+
+}
+
+.abonement_item img {
+
     height: auto;
     width: 100%;
     border-radius: 5px;
- }
- .abonement_date{
+}
+
+.abonement_date {
     font-size: 16px;
     color: #000000;
     margin-bottom: 12px;
- }
+}
 
- .author{
+.author {
     font-size: 15px;
-    color:black;
- }
+    color: black;
+}
