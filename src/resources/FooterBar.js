@@ -1,4 +1,5 @@
 import React from "react";
+import MediaQuery from "react-responsive";
 import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { IconButton } from "@mui/material";
@@ -13,6 +14,10 @@ import {
 
 const Footer = () => {
   return (
+    <div>
+    <MediaQuery minWidth={1280}>
+
+    
     <Box>
       <h1 style={{
         fontSize: "20px",
@@ -90,6 +95,25 @@ const Footer = () => {
         </Row>
       </Container>
     </Box>
+    </MediaQuery>
+
+    <MediaQuery maxWidth={1279}>
+      <footer>
+      <h1 style={{
+        fontSize: "10px",
+        color: "#FFF",
+      }}>
+        © 1991-2023 Санкт-Петербургский театр Комедии имени Н. П. Акимова
+      </h1>
+      <h2 style={{
+        fontSize: "10px",
+        color: "#84848C"
+      }}>
+        город Санкт-Петербург, Невский проспект, дом 56 191023
+      </h2>
+      </footer>
+    </MediaQuery>
+    </div>
   );
 };
 export default Footer;

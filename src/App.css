@@ -93,6 +93,21 @@ h3 {
     margin: 15px;
 }
 
+.afisha_mouth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.afisha_item_mobile{
+    font-size: 15px;
+}
+
+footer{
+    background-color: #1B1D36;
+    margin: 0;
+}
+
 /* Перписать этот старый пиздец */
 
 .afisha_container {
@@ -110,12 +125,7 @@ h3 {
     text-decoration: none;
 }
 
-.afisha_mouth {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
 
 .afisha_item {
     margin: 5px;
