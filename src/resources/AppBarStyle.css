@@ -40,3 +40,20 @@ header{
     color: #FFF;
     margin: 10;
 }
+
+.ul_burger{
+    margin:9px;
+}
+
+.ul_burger a{
+    font-size: 25px;
+}
+
+.burger_contacts{
+    margin: 90px;
+    margin-right: 0px;
+    margin-left: 45px;
+}
+.burger_contacts a{
+    font-size: 13px;
+}

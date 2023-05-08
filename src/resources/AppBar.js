@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './images/logo.png'
 import './AppBarStyle.css'
 import { Button } from '@mui/material'
@@ -6,8 +6,10 @@ import { Menu } from '@mui/material'
 import { MenuItem } from '@mui/material'
 import MediaQuery from 'react-responsive'
 import { Telegram } from '@mui/icons-material'
-import {IconButton} from '@mui/material'
+import { IconButton } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import styled from 'styled-components'
+import CloseIcon from '@mui/icons-material/Close';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/index';
@@ -24,9 +26,16 @@ import Error from '../pages/error'
 
 
 export default function () {
+    const COLORS = {
+        primaryDark: "#1B1D36",
+        primaryLight: "#1B1D36",
+    };
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorE2, setAnchorE2] = React.useState(null);
+    const [click, setClick] = React.useState(null);
 
+    const handleBurgerClick = () => setClick(!click);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -38,6 +47,28 @@ export default function () {
         setAnchorEl(null);
         setAnchorE2(null);
     };
+
+    const Navigation = styled.nav`
+    background-color: #1B1D36;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 600;
+    width: ${(props) => (props.clicked ? "100%" : "0")};
+    opacity: ${(props) => (props.clicked ? "1" : "0")};
+    transition: width 0.8s, opacity 0.8s;
+  `;
+
+    const List = styled.div`
+    display: block;
+    margin: 90px;
+    margin-right: 0px;
+    margin-left: 45px;
+  `;
+
+
+
 
     return (
         <div>
@@ -72,14 +103,68 @@ export default function () {
                     </div>
                 </header >
             </MediaQuery>
-            
+
             {/*Адаптация под мобильную версию */}
             <MediaQuery maxWidth={1279}>
-            <header>
-            <IconButton sx={{color: '#FFF'}}><MenuIcon/></IconButton>
-            <div class="header_item headerButton"><a href="/"><img src={logo} width={100}/></a></div>
-            <IconButton sx={{color: '#FFF'}}><Telegram/></IconButton>
-            </header>
+                <header>
+
+                    <IconButton sx={{ color: '#FFF' }} onClick={handleBurgerClick}><MenuIcon /></IconButton>
+
+                    <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
+
+                    <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
+
+                    <Navigation clicked={click}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <IconButton sx={{ color: '#FFF', fontSize: '44px' }} onClick={handleBurgerClick}><CloseIcon /></IconButton>
+                            <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
+                            <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
+                        </div>
+
+
+                        <List>
+
+                            <ul class="ul_burger">
+                                <a href="/">Афиша</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href="repertuar">Репертуар</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href="artists">Артисты</a>
+                            </ul>
+                            <ul class="ul_burger">
+                            <a href="/">Информация для МГН</a>
+                            </ul>
+                            <ul class="ul_burger">
+                            <a href="/">Зрителям</a>
+                            </ul>
+                            <ul class="ul_burger">
+                            <a href="/">Новости</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href="contacts">Контакты</a>
+                            </ul>
+
+                            <ul class="ul_burger"></ul>
+                            
+
+                        </List>
+
+                        <div class="burger_contacts">
+                            Касса театра
+                            <p>
+                            <a href="tel:+ 7 (812) 555-55-55">+ 7 (812) 555-55-55</a>
+                            </p>
+                        </div>
+
+                        
+
+                        
+                    </Navigation>
+
+                </header>
+
             </MediaQuery>
 
             <BrowserRouter>

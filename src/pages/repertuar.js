@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import testPhoto1 from '../resources/photos/5359.BigImg.jpg'
 import testPhoto2 from '../resources/photos/6980.BigImg.jpg'
 import testPhoto3 from '../resources/photos/abonement.jpg'
+import MediaQuery from 'react-responsive';
 
 const Item = styled(Paper)(({ theme }) => ({
 
@@ -36,103 +37,208 @@ const ItemSpect = styled(Paper)(({ theme }) => ({
 export default function repertuar() {
     return (
         <div>
-            <h1>Репертуар</h1>
 
-            <Grid class="mouth_repertuar" container rowSpacing={1}>    
-                <Item>Текущий репертуар</Item>
-                <Item>Детские спектакли</Item>
-            </Grid>
+            <MediaQuery minWidth={1280}>
+                <h1>Репертуар</h1>
 
-            <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto1} />
-                        <h3>Правда - хорошо, а счастье - лучше</h3>
-                        <span class="author">Александр Островский</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto2} />
-                        <h3>Безумный день, или женитьба Фигаро</h3>
-                        <span class="author">Пьер Бомарше</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto3} />
-                        <h3>Малыш и Карлсон</h3>
-                        <span class="author">Астрид Линдгрен</span>
-                    </div>
-                </ItemSpect>
+                <Grid class="mouth_repertuar" container rowSpacing={1}>
+                    <Item>Текущий репертуар</Item>
+                    <Item>Детские спектакли</Item>
+                </Grid>
 
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto1} />
-                        <h3>Правда - хорошо, а счастье - лучше</h3>
-                        <span class="author">Александр Островский</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto2} />
-                        <h3>Безумный день, или женитьба Фигаро</h3>
-                        <span class="author">Пьер Бомарше</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto3} />
-                        <h3>Малыш и Карлсон</h3>
-                        <span class="author">Астрид Линдгрен</span>
-                    </div>
-                </ItemSpect>
+                <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
 
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto1} />
-                        <h3>Правда - хорошо, а счастье - лучше</h3>
-                        <span class="author">Александр Островский</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto2} />
-                        <h3>Безумный день, или женитьба Фигаро</h3>
-                        <span class="author">Пьер Бомарше</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto3} />
-                        <h3>Малыш и Карлсон</h3>
-                        <span class="author">Астрид Линдгрен</span>
-                    </div>
-                </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
 
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto1} />
-                        <h3>Правда - хорошо, а счастье - лучше</h3>
-                        <span class="author">Александр Островский</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto2} />
-                        <h3>Безумный день, или женитьба Фигаро</h3>
-                        <span class="author">Пьер Бомарше</span>
-                    </div>
-                </ItemSpect>
-                <ItemSpect>
-                    <div class="product-item">
-                        <img src={testPhoto3} />
-                        <h3>Малыш и Карлсон</h3>
-                        <span class="author">Астрид Линдгрен</span>
-                    </div>
-                </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
 
-            </Grid>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
+
+                </Grid>
+            </MediaQuery>
+
+            {/* Мобильная версия */}
+
+            <MediaQuery maxWidth={1279}>
+                <h1 style={{ margin: '6%', fontSize: '40px' }}>Репертуар</h1>
+
+                <Grid class="mouth_repertuar" container rowSpacing={1}>
+                    <Item style={{ fontSize: '15px' }}>Текущий репертуар</Item>
+                    <Item style={{ fontSize: '15px' }}> Детские спектакли</Item>
+                </Grid>
+
+                <Grid container sx={{ justifyContent: 'center', margin: '0px', border: 'none' }}>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
+
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
+
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
+
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto1} />
+                            <h3>Правда - хорошо, а счастье - лучше</h3>
+                            <span class="author">Александр Островский</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto2} />
+                            <h3>Безумный день, или женитьба Фигаро</h3>
+                            <span class="author">Пьер Бомарше</span>
+                        </div>
+                    </ItemSpect>
+                    <ItemSpect>
+                        <div class="product-item">
+                            <img src={testPhoto3} />
+                            <h3>Малыш и Карлсон</h3>
+                            <span class="author">Астрид Линдгрен</span>
+                        </div>
+                    </ItemSpect>
+
+                </Grid>
+            </MediaQuery>
 
         </div>
 
