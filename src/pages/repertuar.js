@@ -63,9 +63,12 @@ export default function repertuar() {
                     </ItemSpect>
                     <ItemSpect>
                         <div class="product-item">
+                            <a href='repertuar.001'>
                             <img src={testPhoto3} />
                             <h3>Малыш и Карлсон</h3>
                             <span class="author">Астрид Линдгрен</span>
+                            <p>Работает только это</p>
+                            </a>
                         </div>
                     </ItemSpect>
 

@@ -53,6 +53,7 @@ h3 {
 
 .product-item img {
     height: auto;
+
     width: 100%;
     border-radius: 5px;
 }
@@ -106,6 +107,76 @@ h3 {
 footer{
     background-color: #1B1D36;
     margin: 0;
+}
+
+.bio_acter{
+    display: flex;
+    margin: 100px;
+    margin-top: 50px;
+}
+.bio_acter_photo img{
+    height: auto;
+    width: 300px;
+    border-radius: 5px;
+    margin:40px;
+    margin-top: 0px;
+}
+
+.spect{
+    display: flex;
+    margin: 100px;
+    margin-top: 50px;
+    border-bottom: 3px solid #EE3224;
+}
+.spect img{
+    height: 500px;
+    border-radius: 5px;
+    margin:40px;
+    margin-top: 0px;
+}
+.spect h1{
+    margin: 0;
+    color: #EE3224;
+}
+
+.spect h2{
+    margin:0;
+    margin-top: 15px;
+}
+.spect h3{
+    margin-top: 30px;
+}
+.spect p{
+    font-size: 46px;
+    font-weight: bold;
+    color: #EE3224;
+    margin-top:10px;
+
+}
+.spect_discrp{
+    margin:100px;
+    
+}
+.spect_discrp h2{
+    text-align: center;
+    margin:20px;
+}
+
+.spect_photo{
+    margin:100px;
+}
+.spect_photo h2{
+    text-align: center;
+}
+
+.spect_artist{
+    margin: 100px;
+}
+.spect_artist h2{
+    text-align: center;
+}
+.spect_artist p{
+    color:#EE3224;
 }
 
 /* Перписать этот старый пиздец */

@@ -20,6 +20,8 @@ import Stars from '../pages/about/akimovStars'
 import Contacts from '../pages/contacts'
 import Akimov from '../pages/akimov'
 import Kazakova from '../pages/kazakova'
+import Personal from '../pages/personalActers'
+import Spect from '../pages/personalSpect'
 
 import Error from '../pages/error'
 
@@ -178,6 +180,8 @@ export default function () {
                     <Route path="contacts" element={<Contacts />} />
                     <Route path="about.akimov" element={<Akimov />} />
                     <Route path="about.kazakova" element={<Kazakova />} />
+                    <Route path="artists.001" element={<Personal/>} />
+                    <Route path="repertuar.001" element={<Spect/>} />
 
                 </Routes>
             </BrowserRouter>

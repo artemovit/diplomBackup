@@ -48,10 +48,13 @@ export default function artists() {
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
 
                     <ItemArtist>
+                    <a href='artists.001'>
                         <div class="product-item">
-                            <img src={testPhoto2} />
+                            <img  src={testPhoto2}/>
                             <h3>Юрий Лазарев</h3>
+                            <p>Работает только он</p>
                         </div>
+                        </a>
                     </ItemArtist>
 
                     <ItemArtist>
@@ -261,11 +264,14 @@ export default function artists() {
 
                 <Grid container sx={{ justifyContent: 'center', margin: '0 px', border: 'none' }}>
 
-                    <ItemArtist>
+                <ItemArtist>
+                    <a href='artists.001'>
                         <div class="product-item">
-                            <img src={testPhoto2} />
+                            <img  src={testPhoto2}/>
                             <h3>Юрий Лазарев</h3>
+                            <p>Работает только он</p>
                         </div>
+                        </a>
                     </ItemArtist>
 
                     <ItemArtist>
