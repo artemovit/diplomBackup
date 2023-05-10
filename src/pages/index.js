@@ -8,7 +8,7 @@ import testPhoto from '../resources/photos/5359.BigImg.jpg'
 import testAbonementPhoto from '../resources/photos/abonement.jpg'
 import { Button } from '@mui/material';
 import MediaQuery from 'react-responsive';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import GradeIcon from '@mui/icons-material/Grade';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -55,10 +55,10 @@ export default function index() {
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none', marginTop: '3px' }}>
                     <ItemSpect>
                         <div class="product-item">
-                            <img src={testPhoto}></img>
-                            <h3>Бешеные деньги</h3>
+                            <img src={testAbonementPhoto}></img>
+                            <h3>Малыш и Карлсон</h3>
                             <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -66,7 +66,7 @@ export default function index() {
                             <img src={testPhoto}></img>
                             <h3>Бешеные деньги</h3>
                             <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -74,7 +74,7 @@ export default function index() {
                             <img src={testPhoto}></img>
                             <h3>Бешеные деньги</h3>
                             <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -82,7 +82,7 @@ export default function index() {
                             <img src={testPhoto}></img>
                             <h3>Бешеные деньги</h3>
                             <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                 </Grid>
@@ -100,10 +100,10 @@ export default function index() {
                     <ItemAfisha>
                         <div class="afisha_mouth">
                             <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
-                            <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
+                            <div class="afisha_item">Малыш и Карлсон<br />Астрид Линдгрен</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -112,7 +112,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -121,7 +121,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -130,7 +130,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -139,7 +139,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -148,7 +148,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -157,7 +157,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -166,7 +166,7 @@ export default function index() {
                             <div class="afisha_item">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item">19:00</div>
                             <div class="afisha_item"><img src={Pushka} /></div>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemAfisha>
 
@@ -183,7 +183,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -194,7 +194,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -205,7 +205,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -216,7 +216,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button">НЕ купить билеты</Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
                 </Grid>
@@ -245,10 +245,10 @@ export default function index() {
                     <ItemAfisha>
                         <div class="afisha_mouth">
                             <div class="afisha_item_mobile"><span class="day_afisha" style={{fontSize: '30px'}}>28</span>ноября</div>
-                            <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
+                            <div class="afisha_item_mobile">Малыш и Карлсон<br />Астрид Линдгрен</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -257,7 +257,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -266,7 +266,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -275,7 +275,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -284,7 +284,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -293,7 +293,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -302,7 +302,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
                     <ItemAfisha>
@@ -311,7 +311,7 @@ export default function index() {
                             <div class="afisha_item_mobile">Бешенные деньги<br />Александр Островский</div>
                             <div class="afisha_item_mobile">19:00</div>
                             <div class="afisha_item"><img src={Pushka} width={50} /></div>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemAfisha>
 
@@ -328,7 +328,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -339,7 +339,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button">В избранное<GradeIcon/></Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -350,7 +350,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemSpect>
                     <ItemSpect>
@@ -361,7 +361,7 @@ export default function index() {
                                 “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
                                 “Первая среди звёзд” - 15 марта 2023 г.
                             </span>
-                            <div class="afisha_item"><Button class="buy_button"><ShoppingCartIcon/></Button></div>
+                            <div class="afisha_item"><Button class="buy_button"><GradeIcon/></Button></div>
                         </div>
                     </ItemSpect>
                 </Grid>
