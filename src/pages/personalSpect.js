@@ -4,7 +4,8 @@ import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import MediaQuery from 'react-responsive';
 import testPhoto2 from '../resources/photos/artists/Lazarev.jpg'
-
+import { Carousel } from '../resources/Caroseul';
+import Box from '@mui/material/Box';
 
 
 import Paper from '@mui/material/Paper';
@@ -33,12 +34,22 @@ const ItemArtist = styled(Paper)(({ theme }) => ({
 })
 )
 
+const Item = styled(Paper)(({ theme }) => ({
+
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: 'black',
+    display: 'flex',
+    justifyContent: 'center',
+    border: 'none',
+    margin: '5px'
+}));
+
 export default function personalSpect() {
     return (
         <div>
             <MediaQuery minWidth={1280}>
                 <div class="spect">
-
                     <img src={testPhoto1} />
 
 
@@ -104,6 +115,12 @@ export default function personalSpect() {
                 </div>
                 <div class="spect_photo">
                     <h2>Фото с спектакля</h2>
+                    <Carousel>
+                    <div class="spect_pic"><img src={testPhoto1} /></div>
+                    <div class="spect_pic"><img src={testPhoto2} /></div>
+                    <div class="spect_pic"><img src={testPhoto1} /></div>
+                    <div class="spect_pic"><img src={testPhoto2} /></div>
+                    </Carousel>
                 </div>
                 <div class="spect_artist">
                     <h2>Действующие лица</h2>
@@ -214,6 +231,18 @@ export default function personalSpect() {
                 </div>
                 <div class="spect_photo">
                     <h2>Фото с спектакля</h2>
+                    <Carousel>
+                        <ItemArtist>
+                        <div class="spect_pic"><img src={testPhoto1} /></div>
+                        </ItemArtist>
+                        <ItemArtist>
+                        <div class="spect_pic"><img src={testPhoto2} /></div>
+                        </ItemArtist>
+                    {/* <div class="spect_pic"><img src={testPhoto1} /></div>
+                    <div class="spect_pic"><img src={testPhoto2} /></div>
+                    <div class="spect_pic"><img src={testPhoto1} /></div>
+                    <div class="spect_pic"><img src={testPhoto2} /></div> */}
+                    </Carousel>
                 </div>
                 <div class="spect_artist">
                     <h2>Действующие лица</h2>
