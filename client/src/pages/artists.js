@@ -1,36 +1,40 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { Context } from '../index'
 import { Grid } from '@mui/material'
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 
-import testPhoto1 from '../resources/photos/artists/Carpova.jpg'
+import { ARTIST_ROUTE } from '../utils/consts';
+
 import testPhoto2 from '../resources/photos/artists/Lazarev.jpg'
 import MediaQuery from 'react-responsive';
 import Box from '@mui/material/Box';
 
-const Item = styled(Paper)(({ theme }) => ({
+export default function () {
+    const Item = styled(Paper)(({ theme }) => ({
 
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: 'black',
-    display: 'flex',
-    justifyContent: 'center',
-    border: 'none',
-    margin: '5px'
-}));
-
-const ItemArtist = styled(Paper)(({ theme }) => ({
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: 'black',
-    display: 'flex',
-    justifyContent: 'center',
-    border: 'none',
-    margin: '37px'
-})
-)
-
-export default function artists() {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: 'black',
+        display: 'flex',
+        justifyContent: 'center',
+        border: 'none',
+        margin: '5px'
+    }));
+    
+    const ItemArtist = styled(Paper)(({ theme }) => ({
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: 'black',
+        display: 'flex',
+        justifyContent: 'center',
+        border: 'none',
+        margin: '37px'
+    })
+    )
+    const { data } = useContext(Context)
+    const navigate = useNavigate()
     return (
         <div>
             <MediaQuery minWidth={1280}>
@@ -47,36 +51,14 @@ export default function artists() {
 
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
 
-                    <ItemArtist>
-                    <a href='artists.001'>
+                    {data.acters.map(acters =>
+                        <ItemArtist key={acters.id} onClick={() => navigate(ARTIST_ROUTE + '/' + acters.id)}>
                         <div class="product-item">
-                            <img  src={testPhoto2}/>
-                            <h3>Юрий Лазарев</h3>
-                            <p>Работает только он</p>
-                        </div>
-                        </a>
-                    </ItemArtist>
-
-                    <ItemArtist>
-                        <div class="product-item">
-                            <img src={testPhoto2} />
-                            <h3>Юрий Лазарев</h3>
+                            <img src={acters.mainPhoto} />
+                            <h3>{acters.name + ' ' + acters.surname}</h3>
                         </div>
                     </ItemArtist>
-
-                    <ItemArtist>
-                        <div class="product-item">
-                            <img src={testPhoto2} />
-                            <h3>Юрий Лазарев</h3>
-                        </div>
-                    </ItemArtist>
-
-                    <ItemArtist>
-                        <div class="product-item">
-                            <img src={testPhoto2} />
-                            <h3>Юрий Лазарев</h3>
-                        </div>
-                    </ItemArtist>
+                        )}
                 </Grid>
 
                 <h2>Заслуженные артисты России</h2>

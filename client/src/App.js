@@ -1,13 +1,16 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import AppBar from './resources/AppBar';
 import FooterBar from './resources/FooterBar';
+import AppRouter from './resources/AppRouter';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+      <BrowserRouter>
      <AppBar/>
+     <AppRouter/>
      <FooterBar/>
-    </div>
+     </BrowserRouter>
   );
 }
 

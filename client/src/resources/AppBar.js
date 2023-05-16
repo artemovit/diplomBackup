@@ -1,29 +1,29 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../index'
 import logo from './images/logo.png'
 import './AppBarStyle.css'
-import { Button } from '@mui/material'
+import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material'
 import { Menu } from '@mui/material'
 import { MenuItem } from '@mui/material'
 import MediaQuery from 'react-responsive'
 import { Telegram } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
+import LoginIcon from '@mui/icons-material/Login';
 import MenuIcon from '@mui/icons-material/Menu'
 import styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close';
+import { Dialog } from '@mui/material'
+import LogoutIcon from '@mui/icons-material/Logout';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../pages/index';
-import Repertuar from '../pages/repertuar'
-import Artists from '../pages/artists'
-import History from '../pages/about/history'
-import Stars from '../pages/about/akimovStars'
-import Contacts from '../pages/contacts'
-import Akimov from '../pages/akimov'
-import Kazakova from '../pages/kazakova'
-import Personal from '../pages/personalActers'
-import Spect from '../pages/personalSpect'
-
-import Error from '../pages/error'
+import { AFISHA_ROUTE } from '../utils/consts'
+import { REPERTUAR_ROUTE } from '../utils/consts'
+import { ARTISTS_ROUTE } from '../utils/consts'
+import { HISTORY_ROUTE } from '../utils/consts'
+import { AKIMOV_STARS_ROUTE } from '../utils/consts'
+import { CONTACTS_ROUTE } from '../utils/consts'
+import { AKIMOV_ROUTE } from '../utils/consts'
+import { KAZAKOVA_ROUTE } from '../utils/consts'
+import { useLocation } from 'react-router-dom'
 
 
 
@@ -48,7 +48,25 @@ export default function () {
     const handleClose = () => {
         setAnchorEl(null);
         setAnchorE2(null);
+        setOpen(false);
+        setOpened(false)
+
     };
+
+    const handleCloseRegistration = () => {
+        setOpened(false)
+    }
+
+    const [open, setOpen] = React.useState(false);
+    const [opened, setOpened] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+
+    const handleClickRegistration = () => {
+        setOpened(true);
+    }
 
     const Navigation = styled.nav`
     background-color: #1B1D36;
@@ -69,10 +87,10 @@ export default function () {
     margin-left: 45px;
   `;
 
-
-
+    const { user } = useContext(Context)
 
     return (
+
         <div>
             <MediaQuery minWidth={1280}>
 
@@ -81,21 +99,72 @@ export default function () {
                     <div class="header_section">
 
                         <Button href="/" class="header_item">Афиша</Button>
-                        <Button class="header_item" href="repertuar">Репертуар</Button>
-                        <Button class="header_item" href="artists">Артисты</Button>
+                        <Button class="header_item" href={REPERTUAR_ROUTE}>Репертуар</Button>
+                        <Button class="header_item" href={ARTISTS_ROUTE}>Артисты</Button>
 
                         <Button class="header_item" onClick={handleClick}>О театре</Button>
-                        <div class="header_item headerButton"><a href="/"><img src={logo} /></a></div>
+                        <div class="header_item headerButton"><a href={AFISHA_ROUTE}><img src={logo} /></a></div>
                         <Button class="header_item">Информация для МГН</Button>
                         <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
                         <Button class="header_item">Новости</Button>
-                        <Button class="header_item" href="contacts">Контакты</Button>
+                        <Button class="header_item" href={CONTACTS_ROUTE}>Контакты</Button>
+                        {user.isAuth ?
+
+                            <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
+                            :
+                            <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
+                        }
+                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Войдите, чтобы просмотреть избранные спектакли
+                                </DialogContentText>
+                                <TextField autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
+                                <TextField autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                                <DialogContentText>
+                                    Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose}>Выйти</Button>
+                                <Button onClick={handleClose}>Авторизоваться</Button>
+                            </DialogActions>
+                        </Dialog>
+
+
+                        <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Введите данные для регистрации
+                                </DialogContentText>
+                                <TextField autoFocus margin='dense' id="name" label="Имя" fullWidth />
+                                <TextField margin='dense' id="surname" label="Фамилия" fullWidth />
+                                <TextField margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
+                                <TextField margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
+                                <TextField margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                                <p>Дата рождения</p>
+                                <TextField margin='dense' id="birthday" type="date" fullWidth />
+
+
+                            </DialogContent>
+
+                            <DialogActions>
+                                <Button onClick={handleClose}>Выйти</Button>
+                                <Button onClick={handleCloseRegistration}>Зарегистрировать</Button>
+                            </DialogActions>
+                        </Dialog>
+
+
+
+
 
                         <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                            <MenuItem component="a" href="about.history">История театра</MenuItem>
-                            <MenuItem component="a" href="about.akimov">Николай Павлович Акимов</MenuItem>
-                            <MenuItem component="a" href="about.star">Звёзды Акимовской сцены</MenuItem>
-                            <MenuItem component="a" href="about.kazakova">Татьяна Сергеевна Казакова</MenuItem>
+                            <MenuItem component="a" href={HISTORY_ROUTE}>История театра</MenuItem>
+                            <MenuItem component="a" href={AKIMOV_ROUTE}>Николай Павлович Акимов</MenuItem>
+                            <MenuItem component="a" href={AKIMOV_STARS_ROUTE}>Звёзды Акимовской сцены</MenuItem>
+                            <MenuItem component="a" href={KAZAKOVA_ROUTE}>Татьяна Сергеевна Казакова</MenuItem>
                             <MenuItem onClick={handleClose}>Документы</MenuItem>
                         </Menu>
                         <Menu id="ZritelyamMenu" anchorEl={anchorE2} keepMounted open={Boolean(anchorE2)} onClose={handleClose}>
@@ -114,7 +183,54 @@ export default function () {
 
                     <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
 
-                    <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
+                    {user.isAuth ?
+
+                        <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
+                        :
+                        <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
+                    }
+
+                    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Войдите, чтобы просмотреть избранные спектакли
+                            </DialogContentText>
+                            <TextField autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
+                            <TextField autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                            <DialogContentText>
+                                Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Выйти</Button>
+                            <Button onClick={handleClose}>Авторизоваться</Button>
+                        </DialogActions>
+                    </Dialog>
+
+
+                    <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Введите данные для регистрации
+                            </DialogContentText>
+                            <TextField autoFocus margin='dense' id="name" label="Имя" fullWidth />
+                            <TextField margin='dense' id="surname" label="Фамилия" fullWidth />
+                            <TextField margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
+                            <TextField margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
+                            <TextField margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                            <p>Дата рождения</p>
+                            <TextField margin='dense' id="birthday" type="date" fullWidth />
+
+
+                        </DialogContent>
+
+                        <DialogActions>
+                            <Button onClick={handleClose}>Выйти</Button>
+                            <Button onClick={handleCloseRegistration}>Зарегистрировать</Button>
+                        </DialogActions>
+                    </Dialog>
 
                     <Navigation clicked={click}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -127,64 +243,47 @@ export default function () {
                         <List>
 
                             <ul class="ul_burger">
-                                <a href="/">Афиша</a>
+                                <a href={AFISHA_ROUTE}>Афиша</a>
                             </ul>
                             <ul class="ul_burger">
-                                <a href="repertuar">Репертуар</a>
+                                <a href={REPERTUAR_ROUTE}>Репертуар</a>
                             </ul>
                             <ul class="ul_burger">
-                                <a href="artists">Артисты</a>
+                                <a href={ARTISTS_ROUTE}>Артисты</a>
                             </ul>
                             <ul class="ul_burger">
-                            <a href="/">Информация для МГН</a>
+                                <a href="/">Информация для МГН</a>
                             </ul>
                             <ul class="ul_burger">
-                            <a href="/">Зрителям</a>
+                                <a href="/">Зрителям</a>
                             </ul>
                             <ul class="ul_burger">
-                            <a href="/">Новости</a>
+                                <a href="/">Новости</a>
                             </ul>
                             <ul class="ul_burger">
-                                <a href="contacts">Контакты</a>
+                                <a href={CONTACTS_ROUTE}>Контакты</a>
                             </ul>
 
                             <ul class="ul_burger"></ul>
-                            
+
 
                         </List>
 
                         <div class="burger_contacts">
                             Касса театра
                             <p>
-                            <a href="tel:+ 7 (812) 555-55-55">+ 7 (812) 555-55-55</a>
+                                <a href="tel:+ 7 (812) 555-55-55">+ 7 (812) 555-55-55</a>
                             </p>
                         </div>
 
-                        
 
-                        
+
+
                     </Navigation>
 
                 </header>
 
             </MediaQuery>
-
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="repertuar" element={<Repertuar />} />
-                    <Route path="artists" element={<Artists />} />
-                    <Route path="about.history" element={<History />} />
-                    <Route path="about.star" element={<Stars />} />
-                    <Route path="*" element={<Error />} />
-                    <Route path="contacts" element={<Contacts />} />
-                    <Route path="about.akimov" element={<Akimov />} />
-                    <Route path="about.kazakova" element={<Kazakova />} />
-                    <Route path="artists.001" element={<Personal/>} />
-                    <Route path="repertuar.001" element={<Spect/>} />
-
-                </Routes>
-            </BrowserRouter>
         </div >
     )
 }
