@@ -7,7 +7,9 @@ const repertuarRouter = require('./repertuarRouter')
 const userRouter = require('./userRouter')
 const abonementRouter = require('./abonementRouter')
 const documentRouter = require('./documentRouter')
-const feedbackController = require('./feetbackRouter')
+const feedbackRouter = require('./feetbackRouter')
+const photosRouter = require('./photosRouter')
+const roleRouter = require('./roleRouter')
 
 
 router.use('/user', userRouter)
@@ -16,6 +18,8 @@ router.use('/afisha', afishaRouter)
 router.use('/artist', artistsRouter)
 router.use('/abonement', abonementRouter)
 router.use('/document', documentRouter)
-router.use('/feedback', feedbackController)
+router.use('/feedback', feedbackRouter)
+router.use('/photos', photosRouter)
+router.use('/role', roleRouter)
 
 module.exports = router

@@ -72,6 +72,7 @@ const Abonement = sequelize.define('abonement', {
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     pushka: {type:DataTypes.BOOLEAN, defaultValue: false},
     mainPhoto: {type:DataTypes.STRING, allowNull: false},//Оставим
+    discription: {type: DataTypes.STRING, allowNull: false},
 })
 
 const RoleArtists = sequelize.define('roleartist', {

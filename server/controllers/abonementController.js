@@ -4,12 +4,12 @@ const path = require('path')
 
 class AbonementController {
     async create(req, res) {
-        const { name, pushka, repertuarId } = req.body()
+        const { name, pushka, discription, repertuarId } = req.body()
         const { mainPhoto } = req.files
         let fileName = uuid.v4() + ".jpg"
         mainPhoto.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-        const abonement = await Abonement.create({name, pushka, repertuarId, mainPhoto: fileName})
+        const abonement = await Abonement.create({name, pushka, discription, repertuarId, mainPhoto: fileName})
         return res.json(abonement)
     }
     async get(req,res){
