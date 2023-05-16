@@ -83,24 +83,45 @@ const RoleArtists = sequelize.define('roleartist', {
 User.hasOne(Basket)
 Basket.belongsTo(User)
 
+
 Basket.hasMany(BasketSpect)
 BasketSpect.belongsTo(Basket)
 
-RoleArtists.hasOne(Repertuar)
-Repertuar.belongsTo(RoleArtists)
-RoleArtists.hasOne(Acter)
-Acter.belongsTo(RoleArtists)
 
-Photos.hasMany(Acter)
-Acter.belongsTo(Photos)
-Photos.hasOne(Repertuar)
-Repertuar.belongsTo(Photos)
 
-Afisha.hasOne(Repertuar)
-Repertuar.belongsTo(Afisha)
+// RoleArtists.hasOne(Repertuar)
+// Repertuar.belongsTo(RoleArtists)
+// RoleArtists.hasOne(Acter)
+// Acter.belongsTo(RoleArtists)
 
-Abonement.hasMany(Repertuar)
-Repertuar.belongsTo(Abonement)
+Repertuar.hasOne(RoleArtists)
+RoleArtists.belongsTo(Repertuar)
+Acter.hasOne(RoleArtists)
+RoleArtists.belongsTo(Acter)
+
+
+// Photos.hasMany(Acter)
+// Acter.belongsTo(Photos)
+// Photos.hasOne(Repertuar)
+// Repertuar.belongsTo(Photos)
+
+Acter.hasMany(Photos)
+Photos.belongsTo(Acter)
+Repertuar.hasOne(Photos)
+Photos.belongsTo(Repertuar)
+
+//Afisha.hasOne(Repertuar)
+//Repertuar.belongsTo(Afisha)
+
+Repertuar.hasOne(Afisha)
+Afisha.belongsTo(Repertuar)
+
+
+// Abonement.hasMany(Repertuar)
+// Repertuar.belongsTo(Abonement)
+
+Repertuar.hasMany(Abonement)
+Abonement.belongsTo(Repertuar)
 
 module.exports = {
     User, Basket, BasketSpect, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists
