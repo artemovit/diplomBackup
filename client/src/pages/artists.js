@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Context } from '../index'
 import { Grid } from '@mui/material'
 import { styled } from '@mui/material/styles';
@@ -10,8 +10,10 @@ import { ARTIST_ROUTE } from '../utils/consts';
 import testPhoto2 from '../resources/photos/artists/Lazarev.jpg'
 import MediaQuery from 'react-responsive';
 import Box from '@mui/material/Box';
+import { observer } from 'mobx-react';
+import {getActer} from '../http/dataAPI'
 
-export default function () {
+const Artists = observer(() => {
     const Item = styled(Paper)(({ theme }) => ({
 
         padding: theme.spacing(1),
@@ -33,7 +35,11 @@ export default function () {
         margin: '37px'
     })
     )
-    const { data } = useContext(Context)
+    const { datas } = useContext(Context)
+    
+    useEffect( () => {
+        getActer().then(data => datas.setArtist(data))
+    },[])
     const navigate = useNavigate()
     return (
         <div>
@@ -51,10 +57,10 @@ export default function () {
 
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
 
-                    {data.acters.map(acters =>
+                    {datas.acters.map(acters =>
                         <ItemArtist key={acters.id} onClick={() => navigate(ARTIST_ROUTE + '/' + acters.id)}>
                         <div class="product-item">
-                            <img src={acters.mainPhoto} />
+                            <img src={process.env.REACT_APP_API_URL + acters.mainPhoto} />
                             <h3>{acters.name + ' ' + acters.surname}</h3>
                         </div>
                     </ItemArtist>
@@ -437,4 +443,6 @@ export default function () {
             </MediaQuery>
         </div>
     )
-}
+})
+
+export default Artists

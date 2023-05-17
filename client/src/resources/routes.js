@@ -11,9 +11,10 @@ import akimov from '../pages/akimov'
 import kazakova from '../pages/kazakova'
 import personalSpect from '../pages/personalSpect'
 import personalActers from '../pages/personalActers'
+import admin from '../pages/admin'
 
 
-import { ADMIN_ROUTE } from '../utils/consts'
+import { ADMIN_AUTH_ROUTE } from '../utils/consts'
 import { BACKET_ROUTE } from '../utils/consts'
 import { AFISHA_ROUTE } from '../utils/consts'
 import { REPERTUAR_ROUTE } from '../utils/consts'
@@ -26,13 +27,10 @@ import { CONTACTS_ROUTE } from '../utils/consts'
 import { AKIMOV_ROUTE } from '../utils/consts'
 import { KAZAKOVA_ROUTE } from '../utils/consts'
 import { SPECTACLE_ROUTE } from '../utils/consts'
+import {ADMIN_ROUTE} from '../utils/consts'
 
 
 export const authRoutes = [
-    {
-        path: ADMIN_ROUTE ,
-        Component: auth
-    },
     {
         path: BACKET_ROUTE,
         Component: backet
@@ -41,6 +39,14 @@ export const authRoutes = [
 ]
 
 export const publicRoutes = [
+    {
+        path: ADMIN_ROUTE,
+        Component: admin
+    },
+    {
+        path: ADMIN_AUTH_ROUTE ,
+        Component: auth
+    },
     {
         path: AFISHA_ROUTE,
         Component: index

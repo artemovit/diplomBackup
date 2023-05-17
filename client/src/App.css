@@ -212,6 +212,12 @@ footer{
     text-decoration: none;
 }
 
+.auth_container{
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+    align-items: center;
+}
 
 
 .afisha_item {

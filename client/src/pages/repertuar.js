@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from '../index'
 import { useNavigate } from 'react-router-dom'
 import { Grid } from '@mui/material'
@@ -8,10 +8,14 @@ import Paper from '@mui/material/Paper';
 import MediaQuery from 'react-responsive';
 import { SPECTACLE_ROUTE } from '../utils/consts';
 
+import {getRepertuar} from '../http/dataAPI'
+import { observer } from 'mobx-react';
 
 
 
-export default function () {
+
+const Repertuar = observer( () => {
+    
     const Item = styled(Paper)(({ theme }) => ({
 
         padding: theme.spacing(1),
@@ -33,7 +37,12 @@ export default function () {
         margin: '37px'
     })
     )
-    const { data } = useContext(Context)
+    const { datas } = useContext(Context)
+    
+    useEffect( () => {
+        getRepertuar().then(data => datas.setRepertuar(data))
+    },[])
+    
     const navigate = useNavigate()
     return (
         <div>
@@ -46,10 +55,10 @@ export default function () {
                 </Grid>
 
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }} >
-                    {data.repertuar.map(repertuar =>
+                    {datas.repertuar.map(repertuar =>
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>
                             <div class="product-item">
-                                <img src={repertuar.mainPhoto} />
+                                <img src={process.env.REACT_APP_API_URL + repertuar.mainPhoto} />
                                 <h3>{repertuar.name}</h3>
                                 <span class="author">{repertuar.author}</span>
                             </div>
@@ -69,7 +78,7 @@ export default function () {
                 </Grid>
 
                 <Grid container sx={{ justifyContent: 'center', margin: '0px', border: 'none' }}>
-                {data.repertuar.map(repertuar =>
+                {datas.repertuar .map(repertuar =>
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>
                             <div class="product-item">
                                 <img src={repertuar.mainPhoto} />
@@ -82,4 +91,6 @@ export default function () {
             </MediaQuery>
         </div>
     )
-}
+}) 
+
+export default Repertuar
