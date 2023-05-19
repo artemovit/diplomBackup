@@ -5,15 +5,13 @@ import Pushka from '../resources/images/pushkin.png'
 import { Context } from '../index'
 
 import Paper from '@mui/material/Paper';
-import testPhoto from '../resources/photos/5359.BigImg.jpg'
 import testAbonementPhoto from '../resources/photos/abonement.jpg'
 import { Button } from '@mui/material';
 import MediaQuery from 'react-responsive';
 import GradeIcon from '@mui/icons-material/Grade';
 import { observer } from 'mobx-react';
-import { getAficha, getRepertuar } from '../http/dataAPI';
+import { getAficha, getFourthAfisha, getAbonement } from '../http/dataAPI';
 import { SPECTACLE_ROUTE } from '../utils/consts';
-import { getOneRepertuar } from '../http/dataAPI'
 import moment from 'moment'
 import { useNavigate, useParams } from 'react-router-dom'
 import 'moment/locale/ru'
@@ -54,18 +52,12 @@ const index = observer(() => {
     const navigate = useNavigate()
 
     const { datas } = useContext(Context)
-    const [spect, setSpect] = useState({ info: [] })
 
     useEffect(() => {
         getAficha().then(data => datas.setAfisha(data))
-        getOneRepertuar(1).then(data => setSpect(data))
+        getFourthAfisha().then(data => datas.setSelectedAfisha(data))
+        getAbonement().then(data => datas.setAbonement(data))
     }, [])
-
-    useEffect(() => {
-        
-        
-    
-}, [])
 
     return (
         <div>
@@ -75,38 +67,17 @@ const index = observer(() => {
                 <h2>Ближайшие спектакли</h2>
 
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none', marginTop: '3px' }}>
-                    <ItemSpect>
+                    {datas.selectedAfisha.map(selectedAfisha =>
+                    <ItemSpect key={selectedAfisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + selectedAfisha.rid)}>
                         <div class="product-item">
-                            <img src={testAbonementPhoto}></img>
-                            <h3>Малыш и Карлсон</h3>
-                            <span class="price">28 ноября</span>
+                            <img src={process.env.REACT_APP_API_URL + selectedAfisha.mainPhoto}></img>
+                            <h3>{selectedAfisha.name}</h3>
+                            <span class="price">{moment(selectedAfisha.day).format('DD MMMM')}</span>
                             <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
-                    <ItemSpect>
-                        <div class="product-item">
-                            <img src={testPhoto}></img>
-                            <h3>Бешеные деньги</h3>
-                            <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                        </div>
-                    </ItemSpect>
-                    <ItemSpect>
-                        <div class="product-item">
-                            <img src={testPhoto}></img>
-                            <h3>Бешеные деньги</h3>
-                            <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                        </div>
-                    </ItemSpect>
-                    <ItemSpect>
-                        <div class="product-item">
-                            <img src={testPhoto}></img>
-                            <h3>Бешеные деньги</h3>
-                            <span class="price">28 ноября</span>
-                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                        </div>
-                    </ItemSpect>
+                    )}
+                    
                 </Grid>
 
                 <h2>Афиша на месяц</h2>
@@ -119,18 +90,18 @@ const index = observer(() => {
                 </Grid>
 
                 <Grid container sx={{ justifyContent: 'center', margin: '0 px', border: 'none', width: 'none' }}>
-                    
-                    {datas.afisha.map(afisha =>
-                    
 
-                        <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.repertuarId)}>
-                            
+                    {datas.afisha.map(afisha =>
+
+
+                        <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.rid)}>
+
                             <div class="afisha_mouth">
-                            
+
                                 <div class="afisha_item"><span class="day_afisha">{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
 
                                 <div class="afisha_item" >
-                                    {spect.name}<br />{spect.author}</div>
+                                    {afisha.name}<br />{afisha.author}</div>
 
                                 <div class="afisha_item"> {moment(afisha.day).format('LT')} </div>
                                 <div class="afisha_item"><img src={Pushka} /></div>
@@ -146,50 +117,17 @@ const index = observer(() => {
                 <h2>Абонементы</h2>
 
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
-                    <ItemSpect>
+                    {datas.abonement.map(abonement =>
+                    
+                    <ItemSpect key={abonement.id}>
                         <div class="abonement_item">
-                            <img src={testAbonementPhoto} />
-                            <h3>PRO театр</h3>
-                            <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                                “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                                “Первая среди звёзд” - 15 марта 2023 г.
-                            </span>
+                            <img src={process.env.REACT_APP_API_URL + abonement.mainPhoto} />
+                            <h3>{abonement.name}</h3>
+                            <span class="abonement_date">{abonement.discription}</span>
                             <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                         </div>
                     </ItemSpect>
-                    <ItemSpect>
-                        <div class="abonement_item">
-                            <img src={testAbonementPhoto} />
-                            <h3>PRO театр</h3>
-                            <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                                “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                                “Первая среди звёзд” - 15 марта 2023 г.
-                            </span>
-                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                        </div>
-                    </ItemSpect>
-                    <ItemSpect>
-                        <div class="abonement_item">
-                            <img src={testAbonementPhoto} />
-                            <h3>PRO театр</h3>
-                            <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                                “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                                “Первая среди звёзд” - 15 марта 2023 г.
-                            </span>
-                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                        </div>
-                    </ItemSpect>
-                    <ItemSpect>
-                        <div class="abonement_item">
-                            <img src={testAbonementPhoto} />
-                            <h3>PRO театр</h3>
-                            <span class="abonement_date">“Краткий курс счастливой жизни” - 20 января 2023 г. <br />
-                                “Синичкin. Театральное безумство” - 1 февраля 2023 г. <br />
-                                “Первая среди звёзд” - 15 марта 2023 г.
-                            </span>
-                            <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                        </div>
-                    </ItemSpect>
+                    )}
                 </Grid>
 
             </MediaQuery>

@@ -5,7 +5,8 @@ export default class DataStore{
         this._repertuar = []
         this._artist = []
         this._afisha = []
-        this._SelectedAfisha = []
+        this._selectedAfisha = []
+        this._abonement = []
         makeAutoObservable(this)
     }
 
@@ -18,8 +19,11 @@ export default class DataStore{
     setAfisha(afisha){
         this._afisha = afisha
     }
-    setSelectedAfisha(spect){
-        this._SelectedAfisha(spect)
+    setSelectedAfisha(selectedAfisha){
+        this._selectedAfisha = selectedAfisha
+    }
+    setAbonement(abonement){
+        this._abonement = abonement
     }
     get repertuar(){
         return this._repertuar
@@ -32,6 +36,9 @@ export default class DataStore{
         return this._afisha
     }
     get selectedAfisha(){
-        return this._SelectedAfisha
+        return this._selectedAfisha
+    }
+    get abonement(){
+        return this._abonement
     }
 }

@@ -35,3 +35,13 @@ export const getAficha = async() =>{
     const {data} = await $host.get('api/afisha')
     return data
 }
+
+export const getFourthAfisha = async() => {
+    const {data} = await $host.get('api/afisha/top4')
+    return data
+}
+
+export const getAbonement = async() => {
+    const {data} = await $host.get('api/abonement')
+    return data
+}
