@@ -11,6 +11,11 @@ export const getRepertuar = async () => {
     return data
 }
 
+export const getOneRepertuar = async (id) => {
+    const {data} = await $host.get('api/repertuar/' + id)
+    return data
+}
+
 export const createActer = async (name, surname, grade, discription, mainPhoto) => {
     const {data} = await $authHost.post('api/artist', {name, surname, grade, discription, mainPhoto})
     return data
@@ -18,5 +23,15 @@ export const createActer = async (name, surname, grade, discription, mainPhoto) 
 
 export const getActer = async () => {
     const {data} = await $host.get('api/artist')
+    return data
+}
+
+export const getOneActer = async (id) => {
+    const {data} = await $host.get('api/artist/' + id)
+    return data
+}
+
+export const getAficha = async() =>{
+    const {data} = await $host.get('api/afisha')
     return data
 }
