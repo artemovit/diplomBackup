@@ -7,6 +7,8 @@ export default class DataStore{
         this._afisha = []
         this._selectedAfisha = []
         this._abonement = []
+        this._narodArtist = []
+        this._deservedArtist = []
         makeAutoObservable(this)
     }
 
@@ -15,6 +17,12 @@ export default class DataStore{
     }
     setArtist(artist){
         this._artist = artist
+    }
+    setNarodArtist(narodArtis){
+        this._narodArtist = narodArtis
+    }
+    setDeservedArtist(deservArtis){
+        this._deservedArtist = deservArtis
     }
     setAfisha(afisha){
         this._afisha = afisha
@@ -31,7 +39,12 @@ export default class DataStore{
     get acters(){
         return this._artist
     }
-
+    get narodArtist(){
+        return this._narodArtist
+    }
+    get deservedArtist(){
+        return this._deservedArtist
+    }
     get afisha(){
         return this._afisha
     }

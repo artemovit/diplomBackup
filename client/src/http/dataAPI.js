@@ -26,6 +26,15 @@ export const getActer = async () => {
     return data
 }
 
+export const getNarodActer = async() => {
+    const {data} = await $host.get('api/artist/grade/narod')
+    return data
+}
+export const getDeservedActer = async() => {
+    const {data} = await $host.get('api/artist/grade/deserved')
+    return data
+}
+
 export const getOneActer = async (id) => {
     const {data} = await $host.get('api/artist/' + id)
     return data

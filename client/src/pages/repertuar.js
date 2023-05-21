@@ -11,9 +11,6 @@ import { SPECTACLE_ROUTE } from '../utils/consts';
 import {getRepertuar} from '../http/dataAPI'
 import { observer } from 'mobx-react';
 
-
-
-
 const Repertuar = observer( () => {
     
     const Item = styled(Paper)(({ theme }) => ({
@@ -71,7 +68,6 @@ const Repertuar = observer( () => {
 
             <MediaQuery maxWidth={1279}>
                 <h1 style={{ margin: '6%', fontSize: '40px' }}>Репертуар</h1>
-
                 <Grid class="mouth_repertuar" container rowSpacing={1}>
                     <Item style={{ fontSize: '15px' }}>Текущий репертуар</Item>
                     <Item style={{ fontSize: '15px' }}> Детские спектакли</Item>
@@ -81,7 +77,7 @@ const Repertuar = observer( () => {
                 {datas.repertuar .map(repertuar =>
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>
                             <div class="product-item">
-                                <img src={repertuar.mainPhoto} />
+                                <img src={process.env.REACT_APP_API_URL + repertuar.mainPhoto} />
                                 <h3>{repertuar.name}</h3>
                                 <span class="author">{repertuar.author}</span>
                             </div>
@@ -92,5 +88,4 @@ const Repertuar = observer( () => {
         </div>
     )
 }) 
-
 export default Repertuar
