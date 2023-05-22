@@ -15,6 +15,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Dialog } from '@mui/material'
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import TelegramIcon from '@mui/icons-material/Telegram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
 import { AFISHA_ROUTE } from '../utils/consts'
 import { REPERTUAR_ROUTE } from '../utils/consts'
 import { ARTISTS_ROUTE } from '../utils/consts'
@@ -23,6 +26,7 @@ import { AKIMOV_STARS_ROUTE } from '../utils/consts'
 import { CONTACTS_ROUTE } from '../utils/consts'
 import { AKIMOV_ROUTE } from '../utils/consts'
 import { KAZAKOVA_ROUTE } from '../utils/consts'
+import { NEWS_ROUTE } from '../utils/consts'
 
 
 import { login, registration } from '../http/userAPI'
@@ -30,10 +34,6 @@ import { login, registration } from '../http/userAPI'
 
 
 export default function () {
-    const COLORS = {
-        primaryDark: "#1B1D36",
-        primaryLight: "#1B1D36",
-    };
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [anchorE2, setAnchorE2] = React.useState(null);
@@ -100,7 +100,7 @@ export default function () {
 
 
     const signIn = async () => {
-        try{
+        try {
             let data;
             data = await login(email, password);
             console.log(data)
@@ -108,215 +108,219 @@ export default function () {
             user.setIsAuth(true)
             setOpen(false);
         }
-        catch(e){
+        catch (e) {
             alert(e.response.data.message)
         }
     }
 
-        const registrationIn = async () => {
-            let data;
-            data = await registration(email, password, birthday, cardID, name, surname);
-            console.log(data)
-            user.setUser(data)
-            user.setIsAuth(true)
-            setOpened(false)
-        }
+    const registrationIn = async () => {
+        let data;
+        data = await registration(email, password, birthday, cardID, name, surname);
+        console.log(data)
+        user.setUser(data)
+        user.setIsAuth(true)
+        setOpened(false)
+    }
 
-            return (
+    return (
 
-                <div>
-                    <MediaQuery minWidth={1280}>
-
-
-                        <header>
-                            <div class="header_section">
-
-                                <Button href="/" class="header_item">Афиша</Button>
-                                <Button class="header_item" href={REPERTUAR_ROUTE}>Репертуар</Button>
-                                <Button class="header_item" href={ARTISTS_ROUTE}>Артисты</Button>
-
-                                <Button class="header_item" onClick={handleClick}>О театре</Button>
-                                <div class="header_item headerButton"><a href={AFISHA_ROUTE}><img src={logo} /></a></div>
-                                <Button class="header_item">Информация для МГН</Button>
-                                <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
-                                <Button class="header_item">Новости</Button>
-                                <Button class="header_item" href={CONTACTS_ROUTE}>Контакты</Button>
-                                {user.isAuth ?
-
-                                    <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
-                                    :
-                                    <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
-                                }
-                                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
-                                    <DialogContent>
-                                        <DialogContentText>
-                                            Войдите, чтобы просмотреть избранные спектакли
-                                        </DialogContentText>
-                                        <TextField value={email} onChange={e => setEmail(e.target.value)} autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
-                                        <TextField value={password} onChange={e => setPassword(e.target.value)} autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                                        <DialogContentText>
-                                            Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
-                                        </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleClose}>Выйти</Button>
-                                        <Button onClick={signIn}>Авторизоваться</Button>
-                                    </DialogActions>
-                                </Dialog>
+        <div>
+            <MediaQuery minWidth={1280}>
 
 
-                                <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
-                                    <DialogContent>
-                                        <DialogContentText>
-                                            Введите данные для регистрации
-                                        </DialogContentText>
-                                        <TextField value={name} onChange={e => setName(e.target.value)} autoFocus margin='dense' id="name" label="Имя" fullWidth />
-                                        <TextField value={surname} onChange={e => setSurname(e.target.value)} margin='dense' id="surname" label="Фамилия" fullWidth />
-                                        <TextField value={cardID} onChange={e => setCardID(e.target.value)} margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
-                                        <TextField value={email} onChange={e => setEmail(e.target.value)} margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
-                                        <TextField value={password} onChange={e => setPassword(e.target.value)} margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                                        <p>Дата рождения</p>
-                                        <TextField value={birthday} onChange={e => setBirthday(e.target.value)} margin='dense' id="birthday" type="date" fullWidth />
+                <header>
+                    <div class="header_section">
+
+                        <Button href="/" class="header_item">Афиша</Button>
+                        <Button class="header_item" href={REPERTUAR_ROUTE}>Репертуар</Button>
+                        <Button class="header_item" href={ARTISTS_ROUTE}>Артисты</Button>
+
+                        <Button class="header_item" onClick={handleClick}>О театре</Button>
+                        <div class="header_item headerButton"><a href={AFISHA_ROUTE}><img src={logo} /></a></div>
+                        <Button class="header_item">Информация для МГН</Button>
+                        <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
+                        <Button class="header_item" href={NEWS_ROUTE}>Новости</Button>
+                        <Button class="header_item" href={CONTACTS_ROUTE}>Контакты</Button>
+                        {user.isAuth ?
+
+                            <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
+                            :
+                            <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
+                        }
+                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Войдите, чтобы просмотреть избранные спектакли
+                                </DialogContentText>
+                                <TextField value={email} onChange={e => setEmail(e.target.value)} autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
+                                <TextField value={password} onChange={e => setPassword(e.target.value)} autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                                <DialogContentText>
+                                    Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose}>Выйти</Button>
+                                <Button onClick={signIn}>Авторизоваться</Button>
+                            </DialogActions>
+                        </Dialog>
 
 
-                                    </DialogContent>
+                        <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
+                            <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Введите данные для регистрации
+                                </DialogContentText>
+                                <TextField value={name} onChange={e => setName(e.target.value)} autoFocus margin='dense' id="name" label="Имя" fullWidth />
+                                <TextField value={surname} onChange={e => setSurname(e.target.value)} margin='dense' id="surname" label="Фамилия" fullWidth />
+                                <TextField value={cardID} onChange={e => setCardID(e.target.value)} margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
+                                <TextField value={email} onChange={e => setEmail(e.target.value)} margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
+                                <TextField value={password} onChange={e => setPassword(e.target.value)} margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                                <p>Дата рождения</p>
+                                <TextField value={birthday} onChange={e => setBirthday(e.target.value)} margin='dense' id="birthday" type="date" fullWidth />
 
-                                    <DialogActions>
-                                        <Button onClick={handleClose}>Выйти</Button>
-                                        <Button onClick={registrationIn}>Зарегистрировать</Button>
-                                    </DialogActions>
-                                </Dialog>
+
+                            </DialogContent>
+
+                            <DialogActions>
+                                <Button onClick={handleClose}>Выйти</Button>
+                                <Button onClick={registrationIn}>Зарегистрировать</Button>
+                            </DialogActions>
+                        </Dialog>
+
+                        <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+                            <MenuItem component="a" href={HISTORY_ROUTE}>История театра</MenuItem>
+                            <MenuItem component="a" href={AKIMOV_ROUTE}>Николай Павлович Акимов</MenuItem>
+                            <MenuItem component="a" href={AKIMOV_STARS_ROUTE}>Звёзды Акимовской сцены</MenuItem>
+                            <MenuItem component="a" href={KAZAKOVA_ROUTE}>Татьяна Сергеевна Казакова</MenuItem>
+                            <MenuItem onClick={handleClose}>Документы</MenuItem>
+                        </Menu>
+                        <Menu id="ZritelyamMenu" anchorEl={anchorE2} keepMounted open={Boolean(anchorE2)} onClose={handleClose}>
+                            <MenuItem onClick={handleClose}>Покупка и возврат билетов</MenuItem>
+                            <MenuItem onClick={handleClose}>Правила посещения театра</MenuItem>
+                        </Menu>
+                    </div>
+                </header >
+            </MediaQuery>
+
+            {/*Адаптация под мобильную версию */}
+            <MediaQuery maxWidth={1279}>
+                <header>
+
+                    <IconButton sx={{ color: '#FFF' }} onClick={handleBurgerClick}><MenuIcon /></IconButton>
+
+                    <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
+
+                    {user.isAuth ?
+
+                        <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
+                        :
+                        <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
+                    }
+
+                    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Войдите, чтобы просмотреть избранные спектакли
+                            </DialogContentText>
+                            <TextField autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
+                            <TextField autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                            <DialogContentText>
+                                Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Выйти</Button>
+                            <Button onClick={handleClose}>Авторизоваться</Button>
+                        </DialogActions>
+                    </Dialog>
 
 
+                    <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                Введите данные для регистрации
+                            </DialogContentText>
+                            <TextField autoFocus margin='dense' id="name" label="Имя" fullWidth />
+                            <TextField margin='dense' id="surname" label="Фамилия" fullWidth />
+                            <TextField margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
+                            <TextField margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
+                            <TextField margin='dense' id="pass" label="Пароль" type="password" fullWidth />
+                            <p>Дата рождения</p>
+                            <TextField margin='dense' id="birthday" type="date" fullWidth />
 
 
+                        </DialogContent>
 
-                                <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-                                    <MenuItem component="a" href={HISTORY_ROUTE}>История театра</MenuItem>
-                                    <MenuItem component="a" href={AKIMOV_ROUTE}>Николай Павлович Акимов</MenuItem>
-                                    <MenuItem component="a" href={AKIMOV_STARS_ROUTE}>Звёзды Акимовской сцены</MenuItem>
-                                    <MenuItem component="a" href={KAZAKOVA_ROUTE}>Татьяна Сергеевна Казакова</MenuItem>
-                                    <MenuItem onClick={handleClose}>Документы</MenuItem>
-                                </Menu>
-                                <Menu id="ZritelyamMenu" anchorEl={anchorE2} keepMounted open={Boolean(anchorE2)} onClose={handleClose}>
-                                    <MenuItem onClick={handleClose}>Покупка и возврат билетов</MenuItem>
-                                    <MenuItem onClick={handleClose}>Правила посещения театра</MenuItem>
-                                </Menu>
-                            </div>
-                        </header >
-                    </MediaQuery>
+                        <DialogActions>
+                            <Button onClick={handleClose}>Выйти</Button>
+                            <Button onClick={handleCloseRegistration}>Зарегистрировать</Button>
+                        </DialogActions>
+                    </Dialog>
 
-                    {/*Адаптация под мобильную версию */}
-                    <MediaQuery maxWidth={1279}>
-                        <header>
-
-                            <IconButton sx={{ color: '#FFF' }} onClick={handleBurgerClick}><MenuIcon /></IconButton>
-
+                    <Navigation clicked={click}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <IconButton sx={{ color: '#FFF', fontSize: '44px' }} onClick={handleBurgerClick}><CloseIcon /></IconButton>
                             <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
-
-                            {user.isAuth ?
-
-                                <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
-                                :
-                                <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
-                            }
-
-                            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                                <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
-                                <DialogContent>
-                                    <DialogContentText>
-                                        Войдите, чтобы просмотреть избранные спектакли
-                                    </DialogContentText>
-                                    <TextField autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
-                                    <TextField autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                                    <DialogContentText>
-                                        Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
-                                    </DialogContentText>
-                                </DialogContent>
-                                <DialogActions>
-                                    <Button onClick={handleClose}>Выйти</Button>
-                                    <Button onClick={handleClose}>Авторизоваться</Button>
-                                </DialogActions>
-                            </Dialog>
+                            <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
+                        </div>
 
 
-                            <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
-                                <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
-                                <DialogContent>
-                                    <DialogContentText>
-                                        Введите данные для регистрации
-                                    </DialogContentText>
-                                    <TextField autoFocus margin='dense' id="name" label="Имя" fullWidth />
-                                    <TextField margin='dense' id="surname" label="Фамилия" fullWidth />
-                                    <TextField margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
-                                    <TextField margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
-                                    <TextField margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                                    <p>Дата рождения</p>
-                                    <TextField margin='dense' id="birthday" type="date" fullWidth />
+                        <List>
+
+                            <ul class="ul_burger">
+                                <a href={AFISHA_ROUTE}>Афиша</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href={REPERTUAR_ROUTE}>Репертуар</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href={ARTISTS_ROUTE}>Артисты</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href="/">Информация для МГН</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href="/">Зрителям</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href="/">Новости</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href={CONTACTS_ROUTE}>Контакты</a>
+                            </ul>
+
+                            <ul class="ul_burger"></ul>
 
 
-                                </DialogContent>
+                        </List>
 
-                                <DialogActions>
-                                    <Button onClick={handleClose}>Выйти</Button>
-                                    <Button onClick={handleCloseRegistration}>Зарегистрировать</Button>
-                                </DialogActions>
-                            </Dialog>
+                        <div class="burger_contacts">
+                            Касса театра
+                            <p>
+                                <a href="tel:+ 7 (812) 555-55-55">+ 7 (812) 555-55-55</a>
+                            </p>
+                        </div>
 
-                            <Navigation clicked={click}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <IconButton sx={{ color: '#FFF', fontSize: '44px' }} onClick={handleBurgerClick}><CloseIcon /></IconButton>
-                                    <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
-                                    <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
-                                </div>
-
-
-                                <List>
-
-                                    <ul class="ul_burger">
-                                        <a href={AFISHA_ROUTE}>Афиша</a>
-                                    </ul>
-                                    <ul class="ul_burger">
-                                        <a href={REPERTUAR_ROUTE}>Репертуар</a>
-                                    </ul>
-                                    <ul class="ul_burger">
-                                        <a href={ARTISTS_ROUTE}>Артисты</a>
-                                    </ul>
-                                    <ul class="ul_burger">
-                                        <a href="/">Информация для МГН</a>
-                                    </ul>
-                                    <ul class="ul_burger">
-                                        <a href="/">Зрителям</a>
-                                    </ul>
-                                    <ul class="ul_burger">
-                                        <a href="/">Новости</a>
-                                    </ul>
-                                    <ul class="ul_burger">
-                                        <a href={CONTACTS_ROUTE}>Контакты</a>
-                                    </ul>
-
-                                    <ul class="ul_burger"></ul>
-
-
-                                </List>
-
-                                <div class="burger_contacts">
-                                    Касса театра
-                                    <p>
-                                        <a href="tel:+ 7 (812) 555-55-55">+ 7 (812) 555-55-55</a>
-                                    </p>
-                                </div>
+                        <div class="burger_contacts">
+                            Театр в социальных сетях
+                            <p>
+                                <IconButton sx={{ color: '#FFF' }}><TelegramIcon /></IconButton>
+                                <IconButton sx={{ color: '#FFF' }}><YouTubeIcon /></IconButton>
+                            </p>
+                        </div>
 
 
 
 
-                            </Navigation>
+                    </Navigation>
 
-                        </header>
+                </header>
 
-                    </MediaQuery>
-                </div >
-            )
-        }
+            </MediaQuery>
+        </div >
+    )
+}

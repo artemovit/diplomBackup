@@ -12,6 +12,8 @@ import kazakova from '../pages/kazakova'
 import personalSpect from '../pages/personalSpect'
 import personalActers from '../pages/personalActers'
 import admin from '../pages/admin'
+import news from '../pages/news'
+import personalNews from '../pages/personalNews'
 
 
 import { ADMIN_AUTH_ROUTE } from '../utils/consts'
@@ -28,6 +30,8 @@ import { AKIMOV_ROUTE } from '../utils/consts'
 import { KAZAKOVA_ROUTE } from '../utils/consts'
 import { SPECTACLE_ROUTE } from '../utils/consts'
 import {ADMIN_ROUTE} from '../utils/consts'
+import { NEWS_ROUTE } from '../utils/consts'
+
 
 
 export const authRoutes = [
@@ -42,6 +46,10 @@ export const publicRoutes = [
     {
         path: ADMIN_ROUTE,
         Component: admin
+    },
+    {
+        path: NEWS_ROUTE,
+        Component: news
     },
     {
         path: ADMIN_AUTH_ROUTE ,
@@ -91,4 +99,8 @@ export const publicRoutes = [
         path: ARTIST_ROUTE + '/:id',
         Component: personalActers
     },
+    {
+        path: NEWS_ROUTE + '/:id',
+        Component: personalNews
+    }
 ]

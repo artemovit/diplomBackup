@@ -50,7 +50,6 @@ const index = observer(() => {
 
     return (
         <div>
-
             <MediaQuery minWidth={1280}>
                 <h1 >Афиша</h1>
                 <h2>Ближайшие спектакли</h2>
@@ -66,17 +65,12 @@ const index = observer(() => {
                             </div>
                         </ItemSpect>
                     )}
-
                 </Grid>
 
                 <h2>Афиша на месяц</h2>
-
                 <Grid container sx={{ justifyContent: 'center', margin: '0 px', border: 'none', width: 'none' }}>
-
                     {datas.afisha.map(afisha =>
-
                         <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.rid)}>
-
                             <div class="afisha_mouth">
                                 <div class="afisha_item"><span class="day_afisha">{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
                                 <div class="afisha_item" >
@@ -85,7 +79,6 @@ const index = observer(() => {
                                 <div class="afisha_item"><img src={Pushka} /></div>
                                 <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                             </div>
-
                         </ItemAfisha>
                     )}
                 </Grid>
@@ -93,7 +86,6 @@ const index = observer(() => {
                 <h2>Абонементы</h2>
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
                     {datas.abonement.map(abonement =>
-
                         <ItemSpect key={abonement.id}>
                             <div class="abonement_item">
                                 <img src={process.env.REACT_APP_API_URL + abonement.mainPhoto} />

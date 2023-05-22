@@ -28,7 +28,7 @@ const Repertuar = sequelize.define('repertuar', {
     discription: {type: DataTypes.STRING},
     time: {type: DataTypes.STRING, allowNull: false},
     children: {type: DataTypes.BOOLEAN, defaultValue: false},
-    mainPhoto: {type:DataTypes.STRING},//Оставим
+    mainPhoto: {type:DataTypes.STRING},
     host: {type: DataTypes.BOOLEAN, defaultValue: false},        
 })
 
@@ -38,7 +38,7 @@ const Acter = sequelize.define('acter', {
     surname: {type:DataTypes.STRING, allowNull:false},
     grade: {type:DataTypes.STRING},
     discription: {type: DataTypes.STRING},
-    mainPhoto: {type:DataTypes.STRING},//Оставим
+    mainPhoto: {type:DataTypes.STRING},
 })
 
 const Documents = sequelize.define('document', {
@@ -64,20 +64,26 @@ const Afisha = sequelize.define('afisha', {
     day: {type:DataTypes.DATE, allowNull: false},
     cenz: {type:DataTypes.CHAR, allowNull: false},
     pushka: {type:DataTypes.BOOLEAN, defaultValue: false},
-    time:{type:DataTypes.TIME, allowNull: false},
 })
 
 const Abonement = sequelize.define('abonement', {
     id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     pushka: {type:DataTypes.BOOLEAN, defaultValue: false},
-    mainPhoto: {type:DataTypes.STRING, allowNull: false},//Оставим
+    mainPhoto: {type:DataTypes.STRING, allowNull: false},
     discription: {type: DataTypes.STRING, allowNull: false},
 })
 
 const RoleArtists = sequelize.define('roleartist', {
     id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
+})
+
+const News = sequelize.define('news', {
+    id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    title: {type: DataTypes.STRING},
+    discription: {type: DataTypes.STRING},
+    mainPhoto: {type:DataTypes.STRING, allowNull: false},
 })
 
 
@@ -88,44 +94,24 @@ Basket.belongsTo(User)
 Basket.hasMany(BasketSpect)
 BasketSpect.belongsTo(Basket)
 
-
-
-// RoleArtists.hasOne(Repertuar)
-// Repertuar.belongsTo(RoleArtists)
-// RoleArtists.hasOne(Acter)
-// Acter.belongsTo(RoleArtists)
-
 Repertuar.hasOne(RoleArtists)
 RoleArtists.belongsTo(Repertuar)
 Acter.hasOne(RoleArtists)
 RoleArtists.belongsTo(Acter)
-
-
-// Photos.hasMany(Acter)
-// Acter.belongsTo(Photos)
-// Photos.hasOne(Repertuar)
-// Repertuar.belongsTo(Photos)
 
 Acter.hasMany(Photos)
 Photos.belongsTo(Acter)
 Repertuar.hasOne(Photos)
 Photos.belongsTo(Repertuar)
 
-//Afisha.hasOne(Repertuar)
-//Repertuar.belongsTo(Afisha)
-
 Repertuar.hasOne(Afisha)
 Afisha.belongsTo(Repertuar)
-
-
-// Abonement.hasMany(Repertuar)
-// Repertuar.belongsTo(Abonement)
 
 Repertuar.hasMany(Abonement)
 Abonement.belongsTo(Repertuar)
 
 module.exports = {
-    User, Basket, BasketSpect, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists
+    User, Basket, BasketSpect, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists, News
 }
 
 

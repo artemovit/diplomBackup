@@ -196,7 +196,10 @@ footer{
     border-radius: 5px;
     margin-top: 0px;
 }
-/* Перписать этот старый пиздец */
+
+.navAdress{
+    display: flex;
+}
 
 .afisha_container {
     border-bottom: 3px solid black;

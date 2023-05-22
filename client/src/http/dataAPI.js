@@ -54,3 +54,23 @@ export const getAbonement = async() => {
     const {data} = await $host.get('api/abonement')
     return data
 }
+
+export const registrDiscription = async(name, email, discription) => {
+    const {data} = await $host.post('api/feedback', {name, email, discription})
+    return data
+}
+
+export const createNews = async (title, discription, mainPhoto) => {
+    const {data} = await $authHost.post('api/news', {title, discription, mainPhoto})
+    return data
+}
+
+export const getNews = async() => {
+    const {data} = await $host.get('api/news')
+    return data
+}
+
+export const getOneNews = async(id) => {
+    const {data} = await $host.get('api/news/' + id)
+    return data
+}

@@ -5,7 +5,7 @@ const ApiError = require('../error/ApiError');
 
 class FeedbackController {
     async create(req, res, next){
-        const {name, email, discription} = req.body()
+        const {name, email, discription} = req.body
         if (!email || !name || !discription){
             return next(ApiError.badRequest('Неккоректный запрос'))
         }
