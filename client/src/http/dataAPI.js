@@ -74,3 +74,13 @@ export const getOneNews = async(id) => {
     const {data} = await $host.get('api/news/' + id)
     return data
 }
+
+export const getSpectAfisha = async(id) => {
+    const {data} = await $host.get('api/afisha/' + id)
+    return data
+}
+
+export const getPhoto = async(id) => {
+    const {data} = await $host.get('api/photos/' + id)
+    return data
+}

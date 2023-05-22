@@ -10,6 +10,8 @@ export default class DataStore {
         this._narodArtist = []
         this._deservedArtist = []
         this._news = []
+        this._spectAfisha = []
+        this._photo = []
         makeAutoObservable(this)
     }
 
@@ -37,6 +39,12 @@ export default class DataStore {
     setNews(news){
         this._news = news
     }
+    setSpectAfisha(spectAfisha){
+        this._spectAfisha = spectAfisha
+    }
+    setPhoto(photo){
+        this._photo = photo
+    }
     get repertuar() {
         return this._repertuar
     }
@@ -60,5 +68,11 @@ export default class DataStore {
     }
     get news() {
         return this._news
+    }
+    get spectAfisha() {
+        return this._spectAfisha
+    }
+    get photo() {
+        return this._photo
     }
 }

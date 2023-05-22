@@ -5,14 +5,17 @@ const ApiError = require("../error/ApiError")
 
 class AbonementController {
     async create(req, res) {
-
+        try{
             const { name, pushka, discription, repertuarId } = req.body
             const { mainPhoto } = req.files
             let fileName = uuid.v4() + ".jpg"
             mainPhoto.mv(path.resolve(__dirname, '..', 'static', fileName))
             const abonement = await Abonement.create({ name, pushka, discription, repertuarId, mainPhoto: fileName })
             return res.json(abonement)
-
+        }
+        catch(e){
+            next(ApiError.badRequest(e.message))
+        }
             
         
     }

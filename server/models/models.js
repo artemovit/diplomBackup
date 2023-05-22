@@ -12,14 +12,6 @@ const User = sequelize.define('user', {
     surname: {type:DataTypes.STRING, allowNull: false},
 })
 
-const Basket = sequelize.define('backet', {
-    id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-})
-
-const BasketSpect = sequelize.define('backet_spect', {
-    id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-})
-
 const Repertuar = sequelize.define('repertuar', {
     id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
@@ -86,21 +78,11 @@ const News = sequelize.define('news', {
     mainPhoto: {type:DataTypes.STRING, allowNull: false},
 })
 
-
-User.hasOne(Basket)
-Basket.belongsTo(User)
-
-
-Basket.hasMany(BasketSpect)
-BasketSpect.belongsTo(Basket)
-
 Repertuar.hasOne(RoleArtists)
 RoleArtists.belongsTo(Repertuar)
 Acter.hasOne(RoleArtists)
 RoleArtists.belongsTo(Acter)
 
-Acter.hasMany(Photos)
-Photos.belongsTo(Acter)
 Repertuar.hasOne(Photos)
 Photos.belongsTo(Repertuar)
 
@@ -111,7 +93,7 @@ Repertuar.hasMany(Abonement)
 Abonement.belongsTo(Repertuar)
 
 module.exports = {
-    User, Basket, BasketSpect, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists, News
+    User, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists, News
 }
 
 

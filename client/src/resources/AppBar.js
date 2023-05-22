@@ -141,12 +141,7 @@ export default function () {
                         <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
                         <Button class="header_item" href={NEWS_ROUTE}>Новости</Button>
                         <Button class="header_item" href={CONTACTS_ROUTE}>Контакты</Button>
-                        {user.isAuth ?
 
-                            <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
-                            :
-                            <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
-                        }
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                             <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
                             <DialogContent>

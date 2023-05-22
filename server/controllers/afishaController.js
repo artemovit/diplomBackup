@@ -24,6 +24,13 @@ class AfishaController {
         const afishas = await dbPool.query(`SELECT *, repertuars.name, repertuars.author FROM afishas JOIN repertuars ON afishas.rid = repertuars.id WHERE afishas.day >= current_date limit 4`);
         return res.json(afishas.rows)
     }
-}
+
+
+    async getForSpect(req,res){
+        const {id} = req.params
+        const afisha = await dbPool.query(`SELECT afishas.day, afishas.cenz, afishas.pushka FROM afishas WHERE afishas.rid = ${id} AND afishas.day >= current_date`)
+        return res.json(afisha.rows)
+        }
+    }
 
 module.exports = new AfishaController()

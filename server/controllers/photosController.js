@@ -1,33 +1,28 @@
 const {Photos} = require("../models/models")
 const uuid = require('uuid')
-const path = require('path')
+const pathh = require('path')
+const ApiError = require("../error/ApiError")
+const dbPool = require("../dbPool")
 
 class PhotosController {
     async create(req, res, next){
+        try{
         const {acterId, repertuarId } = req.body
         const {path} = req.files
         let fileName = uuid.v4() + ".jpg"
-        path.mv(path.resolve(__dirname, '..', 'static', fileName))
+        path.mv(pathh.resolve(__dirname, '..', 'static', fileName))
 
         const photo = await Photos.create({acterId, repertuarId, path: fileName})
         return res.json(photo)
+        }
+        catch (e){
+            next(ApiError.badRequest(e.message))
+        }
     }
     async get(req,res){
-        const {acterId, repertuarId } = req.body
-        let photo;
-        if (!acterId, !repertuarId) {
-            photo = await Photos.findAll()
-        }
-        if (acterId, !repertuarId){
-            photo = await Photos.findAll({where: {acterId}})
-        }
-        if (!acterId, repertuarId){
-            photo = await Photos.findAll({where: {repertuarId}})
-        }
-        if (acterId, repertuarId){
-            photo = await Photos.findAll({where: {acterId, repertuarId}})
-        }
-        return res.json(photo)
+        const {id} = req.params
+        const photo = await dbPool.query(`select * from photos where rid = ${id}`)
+        return res.json(photo.rows)
     }
 }
 
