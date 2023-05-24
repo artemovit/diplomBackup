@@ -1,18 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react'
-import testPhoto1 from '../resources/photos/abonement.jpg'
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import MediaQuery from 'react-responsive';
-import testPhoto2 from '../resources/photos/artists/Lazarev.jpg'
 import { Carousel } from '../resources/Caroseul';
 import { useParams } from 'react-router-dom'
 import { Context } from '../index'
 
-import { getOneRepertuar, getPhoto, getSpectPhoto } from '../http/dataAPI'
+import { getOneRepertuar } from '../http/dataAPI'
 import { observer } from 'mobx-react';
+import { getPhoto } from '../http/dataAPI';
 import { getSpectAfisha } from '../http/dataAPI';
+import { getRoleBySpect } from '../http/dataAPI';
+import { ARTIST_ROUTE } from '../utils/consts';
 import moment from 'moment'
 import 'moment/locale/ru'
+import { useNavigate } from 'react-router-dom'
 
 
 import Paper from '@mui/material/Paper';
@@ -42,24 +44,15 @@ const personalSpect = observer(() => {
     })
     )
 
-    const Item = styled(Paper)(({ theme }) => ({
-
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: 'black',
-        display: 'flex',
-        justifyContent: 'center',
-        border: 'none',
-        margin: '5px'
-    }));
-
+    const navigate = useNavigate()
     const { datas } = useContext(Context)
     const [spect, setSpect] = useState({ info: [] })
     const { id } = useParams()
     useEffect(() => {
         getOneRepertuar(id).then(data => setSpect(data))
         getSpectAfisha(id).then(data => datas.setSpectAfisha(data))
-        getPhoto(1).then(data => datas.setPhoto(data))
+        getPhoto(id).then(data => datas.setPhoto(data))
+        getRoleBySpect(id).then(data => datas.setRoleBySpect(data))
     }, [])
 
     return (
@@ -68,20 +61,16 @@ const personalSpect = observer(() => {
                 <div class="spect">
                     <img src={process.env.REACT_APP_API_URL + spect.mainPhoto} />
                     <div>
-                        <h1>{spect.name}</h1>
-                        <h2>{spect.author}</h2>
+                        <h1>{spect.name}</h1>  <h2>{spect.author}</h2>
+                        <h3>Режиссер:</h3> <h4>{spect.director}</h4>
 
-                        <h3>Режиссер:</h3>
-                        <h4>{spect.director}</h4>
-
-                        <h3>Пролжительность:</h3>
-                        <p>{spect.time}</p>
+                        <h3>Пролжительность:</h3> <p>{spect.time}</p>
 
                         <h3>Ближайшие спектакли: </h3>
                         <Grid container sx={{ justifyContent: 'center' }}>
                             {datas.spectAfisha.map(spectAfisha =>
                                 <ItemAfisha>
-                                    <div class="afisha_mouth" style={{width: 'auto'}}>
+                                    <div class="afisha_mouth" style={{ width: 'auto' }}>
                                         <div class="afisha_item"><span class="day_afisha">{moment(spectAfisha.day).format('DD')}</span>{moment(spectAfisha.day).format('MMMM')}</div>
                                         <div class="afisha_item">{moment(spectAfisha.day).format('LT')}</div>
                                         {/* <div class="afisha_item"><img src={Pushka} /></div> */}
@@ -100,47 +89,25 @@ const personalSpect = observer(() => {
                     <h2>Фото с спектакля</h2>
                     <Carousel>
                         {datas.photo.map(photo =>
-                        <div class="spect_pic"><img src={process.env.REACT_APP_API_URL + photo.path} /></div>
+                            <div class="spect_pic">
+                                <img src={process.env.REACT_APP_API_URL + photo.path} />
+                            </div>
                         )}
                     </Carousel>
                 </div>
                 <div class="spect_artist">
                     <h2>Действующие лица</h2>
                     <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }}>
-
-                        <ItemArtist>
-                            <a href='artists.001'>
+                        {datas.roleBySpect.map(roleBySpect =>
+                            <ItemArtist key={roleBySpect.id} onClick={() => navigate(ARTIST_ROUTE + '/' + roleBySpect.aid)}>
                                 <div class="product-item">
-                                    <img src={testPhoto2} />
-                                    <h3>Юрий Лазарев</h3>
-                                    <p>Роль</p>
+                                    <img src={process.env.REACT_APP_API_URL + roleBySpect.mainPhoto} />
+                                    <h3>{roleBySpect.name + ' ' + roleBySpect.surname}</h3>
+                                    <p>{roleBySpect.title}</p>
                                 </div>
-                            </a>
-                        </ItemArtist>
+                            </ItemArtist>
+                        )}
 
-                        <ItemArtist>
-                            <div class="product-item">
-                                <img src={testPhoto2} />
-                                <h3>Юрий Лазарев</h3>
-                                <p>Роль</p>
-                            </div>
-                        </ItemArtist>
-
-                        <ItemArtist>
-                            <div class="product-item">
-                                <img src={testPhoto2} />
-                                <h3>Юрий Лазарев</h3>
-                                <p>Роль</p>
-                            </div>
-                        </ItemArtist>
-
-                        <ItemArtist>
-                            <div class="product-item">
-                                <img src={testPhoto2} />
-                                <h3>Юрий Лазарев</h3>
-                                <p>Роль</p>
-                            </div>
-                        </ItemArtist>
                     </Grid>
                 </div>
             </MediaQuery>
@@ -160,46 +127,18 @@ const personalSpect = observer(() => {
 
                         <h3>Ближайшие спектакли: </h3>
                         <Grid container sx={{ justifyContent: 'center' }}>
-                            <ItemAfisha>
-                                <div class="afisha_mouth">
-                                    <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
-                                    <div class="afisha_item">19:00</div>
-                                    {/* <div class="afisha_item"><img src={Pushka} /></div> */}
-                                    <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                                </div>
-                            </ItemAfisha>
-                            <ItemAfisha>
-                                <div class="afisha_mouth">
-                                    <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
-                                    <div class="afisha_item">19:00</div>
-                                    {/* <div class="afisha_item"><img src={Pushka} /></div> */}
-                                    <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                                </div>
-                            </ItemAfisha>
-                            <ItemAfisha>
-                                <div class="afisha_mouth">
-                                    <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
-                                    <div class="afisha_item">19:00</div>
-                                    {/* <div class="afisha_item"><img src={Pushka} /></div> */}
-                                    <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                                </div>
-                            </ItemAfisha>
-                            <ItemAfisha>
-                                <div class="afisha_mouth">
-                                    <div class="afisha_item"><span class="day_afisha">28</span>ноября</div>
-                                    <div class="afisha_item">19:00</div>
-                                    {/* <div class="afisha_item"><img src={Pushka} /></div> */}
-                                    <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
-                                </div>
-                            </ItemAfisha>
+                            {datas.spectAfisha.map(spectAfisha =>
+                                <ItemAfisha>
+                                    <div class="afisha_mouth" style={{ width: 'auto' }}>
+                                        <div class="afisha_item"><span class="day_afisha">{moment(spectAfisha.day).format('DD')}</span>{moment(spectAfisha.day).format('MMMM')}</div>
+                                        <div class="afisha_item">{moment(spectAfisha.day).format('LT')}</div>
+                                        {/* <div class="afisha_item"><img src={Pushka} /></div> */}
+                                        <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
+                                    </div>
+                                </ItemAfisha>
+                            )}
                         </Grid>
-
-
-
                     </div>
-
-
-
                 </div>
                 <div class="spect_discrp" style={{ margin: '30px' }}>
                     <h2 >Описание</h2>
@@ -208,55 +147,25 @@ const personalSpect = observer(() => {
                 <div class="spect_photo">
                     <h2>Фото с спектакля</h2>
                     <Carousel>
-                        <ItemArtist>
-                            <div class="spect_pic"><img src={testPhoto1} /></div>
-                        </ItemArtist>
-                        <ItemArtist>
-                            <div class="spect_pic"><img src={testPhoto2} /></div>
-                        </ItemArtist>
-                        {/* <div class="spect_pic"><img src={testPhoto1} /></div>
-                    <div class="spect_pic"><img src={testPhoto2} /></div>
-                    <div class="spect_pic"><img src={testPhoto1} /></div>
-                    <div class="spect_pic"><img src={testPhoto2} /></div> */}
+                        {datas.photo.map(photo =>
+                            <div class="spect_pic">
+                                <img src={process.env.REACT_APP_API_URL + photo.path} />
+                            </div>
+                        )}
                     </Carousel>
                 </div>
                 <div class="spect_artist">
                     <h2>Действующие лица</h2>
                     <Grid container sx={{ justifyContent: 'center' }}>
-
-                        <ItemArtist>
-                            <a href='artists.001'>
+                        {datas.roleBySpect.map(roleBySpect =>
+                            <ItemArtist key={roleBySpect.id} onClick={() => navigate(ARTIST_ROUTE + '/' + roleBySpect.aid)}>
                                 <div class="product-item">
-                                    <img src={testPhoto2} />
-                                    <h3>Юрий Лазарев</h3>
-                                    <p>Роль</p>
+                                    <img src={process.env.REACT_APP_API_URL + roleBySpect.mainPhoto} />
+                                    <h3>{roleBySpect.name + ' ' + roleBySpect.surname}</h3>
+                                    <p>{roleBySpect.title}</p>
                                 </div>
-                            </a>
-                        </ItemArtist>
-
-                        <ItemArtist>
-                            <div class="product-item">
-                                <img src={testPhoto2} />
-                                <h3>Юрий Лазарев</h3>
-                                <p>Роль</p>
-                            </div>
-                        </ItemArtist>
-
-                        <ItemArtist>
-                            <div class="product-item">
-                                <img src={testPhoto2} />
-                                <h3>Юрий Лазарев</h3>
-                                <p>Роль</p>
-                            </div>
-                        </ItemArtist>
-
-                        <ItemArtist>
-                            <div class="product-item">
-                                <img src={testPhoto2} />
-                                <h3>Юрий Лазарев</h3>
-                                <p>Роль</p>
-                            </div>
-                        </ItemArtist>
+                            </ItemArtist>
+                        )}
                     </Grid>
                 </div>
             </MediaQuery>

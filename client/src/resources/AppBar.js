@@ -1,19 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { Context } from '../index'
 import logo from './images/logo.png'
 import './AppBarStyle.css'
-import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material'
+import { Button} from '@mui/material'
 import { Menu } from '@mui/material'
 import { MenuItem } from '@mui/material'
 import MediaQuery from 'react-responsive'
 import { Telegram } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
-import LoginIcon from '@mui/icons-material/Login';
 import MenuIcon from '@mui/icons-material/Menu'
 import styled from 'styled-components'
 import CloseIcon from '@mui/icons-material/Close';
-import { Dialog } from '@mui/material'
-import LogoutIcon from '@mui/icons-material/Logout';
 
 import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -28,8 +24,6 @@ import { AKIMOV_ROUTE } from '../utils/consts'
 import { KAZAKOVA_ROUTE } from '../utils/consts'
 import { NEWS_ROUTE } from '../utils/consts'
 
-
-import { login, registration } from '../http/userAPI'
 
 
 
@@ -50,25 +44,7 @@ export default function () {
     const handleClose = () => {
         setAnchorEl(null);
         setAnchorE2(null);
-        setOpen(false);
-        setOpened(false)
-
     };
-
-    const handleCloseRegistration = () => {
-        setOpened(false)
-    }
-
-    const [open, setOpen] = React.useState(false);
-    const [opened, setOpened] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    }
-
-    const handleClickRegistration = () => {
-        setOpened(true);
-    }
 
     const Navigation = styled.nav`
     background-color: #1B1D36;
@@ -89,39 +65,6 @@ export default function () {
     margin-left: 45px;
   `;
 
-    const { user } = useContext(Context)
-
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [birthday, setBirthday] = useState('')
-    const [cardID, setCardID] = useState('')
-    const [name, setName] = useState('')
-    const [surname, setSurname] = useState('')
-
-
-    const signIn = async () => {
-        try {
-            let data;
-            data = await login(email, password);
-            console.log(data)
-            user.setUser(data)
-            user.setIsAuth(true)
-            setOpen(false);
-        }
-        catch (e) {
-            alert(e.response.data.message)
-        }
-    }
-
-    const registrationIn = async () => {
-        let data;
-        data = await registration(email, password, birthday, cardID, name, surname);
-        console.log(data)
-        user.setUser(data)
-        user.setIsAuth(true)
-        setOpened(false)
-    }
-
     return (
 
         <div>
@@ -141,49 +84,7 @@ export default function () {
                         <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
                         <Button class="header_item" href={NEWS_ROUTE}>Новости</Button>
                         <Button class="header_item" href={CONTACTS_ROUTE}>Контакты</Button>
-
-                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                            <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    Войдите, чтобы просмотреть избранные спектакли
-                                </DialogContentText>
-                                <TextField value={email} onChange={e => setEmail(e.target.value)} autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
-                                <TextField value={password} onChange={e => setPassword(e.target.value)} autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                                <DialogContentText>
-                                    Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={handleClose}>Выйти</Button>
-                                <Button onClick={signIn}>Авторизоваться</Button>
-                            </DialogActions>
-                        </Dialog>
-
-
-                        <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
-                            <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    Введите данные для регистрации
-                                </DialogContentText>
-                                <TextField value={name} onChange={e => setName(e.target.value)} autoFocus margin='dense' id="name" label="Имя" fullWidth />
-                                <TextField value={surname} onChange={e => setSurname(e.target.value)} margin='dense' id="surname" label="Фамилия" fullWidth />
-                                <TextField value={cardID} onChange={e => setCardID(e.target.value)} margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
-                                <TextField value={email} onChange={e => setEmail(e.target.value)} margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
-                                <TextField value={password} onChange={e => setPassword(e.target.value)} margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                                <p>Дата рождения</p>
-                                <TextField value={birthday} onChange={e => setBirthday(e.target.value)} margin='dense' id="birthday" type="date" fullWidth />
-
-
-                            </DialogContent>
-
-                            <DialogActions>
-                                <Button onClick={handleClose}>Выйти</Button>
-                                <Button onClick={registrationIn}>Зарегистрировать</Button>
-                            </DialogActions>
-                        </Dialog>
-
+                        
                         <Menu class="menuu" id="AboutMenu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
                             <MenuItem component="a" href={HISTORY_ROUTE}>История театра</MenuItem>
                             <MenuItem component="a" href={AKIMOV_ROUTE}>Николай Павлович Акимов</MenuItem>
@@ -206,55 +107,7 @@ export default function () {
                     <IconButton sx={{ color: '#FFF' }} onClick={handleBurgerClick}><MenuIcon /></IconButton>
 
                     <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
-
-                    {user.isAuth ?
-
-                        <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LoginIcon /></IconButton>
-                        :
-                        <IconButton sx={{ color: '#FFF' }} onClick={handleClickOpen}><LogoutIcon /></IconButton>
-                    }
-
-                    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">Авторизация</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText>
-                                Войдите, чтобы просмотреть избранные спектакли
-                            </DialogContentText>
-                            <TextField autoFocus margin='dense' id="name" label="Телефон" type="phone" fullWidth />
-                            <TextField autoFocus margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                            <DialogContentText>
-                                Нет аккаунта? <Button onClick={handleClickRegistration}>Зарегистрировать!</Button>
-                            </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleClose}>Выйти</Button>
-                            <Button onClick={handleClose}>Авторизоваться</Button>
-                        </DialogActions>
-                    </Dialog>
-
-
-                    <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">Регистрация</DialogTitle>
-                        <DialogContent>
-                            <DialogContentText>
-                                Введите данные для регистрации
-                            </DialogContentText>
-                            <TextField autoFocus margin='dense' id="name" label="Имя" fullWidth />
-                            <TextField margin='dense' id="surname" label="Фамилия" fullWidth />
-                            <TextField margin='dense' id="card" label="Пропуск в мир Комедии" fullWidth />
-                            <TextField margin='dense' id="phone" label="Телефон" type="phone" fullWidth />
-                            <TextField margin='dense' id="pass" label="Пароль" type="password" fullWidth />
-                            <p>Дата рождения</p>
-                            <TextField margin='dense' id="birthday" type="date" fullWidth />
-
-
-                        </DialogContent>
-
-                        <DialogActions>
-                            <Button onClick={handleClose}>Выйти</Button>
-                            <Button onClick={handleCloseRegistration}>Зарегистрировать</Button>
-                        </DialogActions>
-                    </Dialog>
+                    <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
 
                     <Navigation clicked={click}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>

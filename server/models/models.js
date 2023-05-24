@@ -68,7 +68,7 @@ const Abonement = sequelize.define('abonement', {
 
 const RoleArtists = sequelize.define('roleartist', {
     id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING},
+    title: {type: DataTypes.STRING},
 })
 
 const News = sequelize.define('news', {

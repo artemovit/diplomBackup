@@ -7,19 +7,19 @@ const dbPool = require("../dbPool")
 class PhotosController {
     async create(req, res, next){
         try{
-        const {acterId, repertuarId } = req.body
+        const {rid} = req.body
         const {path} = req.files
         let fileName = uuid.v4() + ".jpg"
         path.mv(pathh.resolve(__dirname, '..', 'static', fileName))
 
-        const photo = await Photos.create({acterId, repertuarId, path: fileName})
-        return res.json(photo)
+        const photo = await dbPool.query(`insert into photos (path, createdat, updatedat, rid) values('${fileName}', now(), now(), ${rid})`)
+        return res.json(photo.rows)
         }
         catch (e){
             next(ApiError.badRequest(e.message))
         }
     }
-    async get(req,res){
+    async getBySpect(req,res){
         const {id} = req.params
         const photo = await dbPool.query(`select * from photos where rid = ${id}`)
         return res.json(photo.rows)

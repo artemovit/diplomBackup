@@ -12,6 +12,7 @@ export default class DataStore {
         this._news = []
         this._spectAfisha = []
         this._photo = []
+        this._roleBySpect = []
         makeAutoObservable(this)
     }
 
@@ -36,14 +37,17 @@ export default class DataStore {
     setAbonement(abonement) {
         this._abonement = abonement
     }
-    setNews(news){
+    setNews(news) {
         this._news = news
     }
-    setSpectAfisha(spectAfisha){
+    setSpectAfisha(spectAfisha) {
         this._spectAfisha = spectAfisha
     }
-    setPhoto(photo){
+    setPhoto(photo) {
         this._photo = photo
+    }
+    setRoleBySpect(roleBySpect) {
+        this._roleBySpect = roleBySpect
     }
     get repertuar() {
         return this._repertuar
@@ -74,5 +78,8 @@ export default class DataStore {
     }
     get photo() {
         return this._photo
+    }
+    get roleBySpect() {
+        return this._roleBySpect
     }
 }

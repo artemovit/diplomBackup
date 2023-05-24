@@ -20,10 +20,10 @@ export const Carousel = ({ children }) => {
     setOffset((currentOffset) => {
       const newOffset = currentOffset - PAGE_WIDTH
 
-      const maxOffset = -(PAGE_WIDTH * (pages.length - 1))
+      
 
-      console.log(newOffset, maxOffset)
-      return Math.max(newOffset, maxOffset)
+      console.log(newOffset)
+      return Math.max(newOffset)
     })
   }
 

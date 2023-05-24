@@ -84,3 +84,13 @@ export const getPhoto = async(id) => {
     const {data} = await $host.get('api/photos/' + id)
     return data
 }
+
+export const getRoleBySpect = async(id) => {
+    const {data} = await $host.get('api/role/spect/' + id)
+    return data
+}
+
+export const getRoleByArtist = async(id) => {
+    const {data} = await $host.get('api/role/artist/' + id)
+    return data
+}
