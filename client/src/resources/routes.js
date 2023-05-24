@@ -14,6 +14,7 @@ import personalActers from '../pages/personalActers'
 import admin from '../pages/admin'
 import news from '../pages/news'
 import personalNews from '../pages/personalNews'
+import docs from '../pages/document'
 
 
 import { ADMIN_AUTH_ROUTE } from '../utils/consts'
@@ -31,6 +32,7 @@ import { KAZAKOVA_ROUTE } from '../utils/consts'
 import { SPECTACLE_ROUTE } from '../utils/consts'
 import {ADMIN_ROUTE} from '../utils/consts'
 import { NEWS_ROUTE } from '../utils/consts'
+import { DOCS_ROUTE } from '../utils/consts'
 
 
 
@@ -102,5 +104,9 @@ export const publicRoutes = [
     {
         path: NEWS_ROUTE + '/:id',
         Component: personalNews
+    },
+    {
+        path: DOCS_ROUTE,
+        Component: docs
     }
 ]

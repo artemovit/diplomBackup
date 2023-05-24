@@ -23,7 +23,7 @@ import { CONTACTS_ROUTE } from '../utils/consts'
 import { AKIMOV_ROUTE } from '../utils/consts'
 import { KAZAKOVA_ROUTE } from '../utils/consts'
 import { NEWS_ROUTE } from '../utils/consts'
-
+import { DOCS_ROUTE } from '../utils/consts'
 
 
 
@@ -90,7 +90,7 @@ export default function () {
                             <MenuItem component="a" href={AKIMOV_ROUTE}>Николай Павлович Акимов</MenuItem>
                             <MenuItem component="a" href={AKIMOV_STARS_ROUTE}>Звёзды Акимовской сцены</MenuItem>
                             <MenuItem component="a" href={KAZAKOVA_ROUTE}>Татьяна Сергеевна Казакова</MenuItem>
-                            <MenuItem onClick={handleClose}>Документы</MenuItem>
+                            <MenuItem component="a" href={DOCS_ROUTE}>Документы</MenuItem>
                         </Menu>
                         <Menu id="ZritelyamMenu" anchorEl={anchorE2} keepMounted open={Boolean(anchorE2)} onClose={handleClose}>
                             <MenuItem onClick={handleClose}>Покупка и возврат билетов</MenuItem>

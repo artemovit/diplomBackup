@@ -13,6 +13,7 @@ export default class DataStore {
         this._spectAfisha = []
         this._photo = []
         this._roleBySpect = []
+        this._document = []
         makeAutoObservable(this)
     }
 
@@ -49,6 +50,9 @@ export default class DataStore {
     setRoleBySpect(roleBySpect) {
         this._roleBySpect = roleBySpect
     }
+    setDocument(document){
+        this._document = document
+    }
     get repertuar() {
         return this._repertuar
     }
@@ -81,5 +85,8 @@ export default class DataStore {
     }
     get roleBySpect() {
         return this._roleBySpect
+    }
+    get document(){
+        return this._document
     }
 }

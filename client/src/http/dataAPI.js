@@ -94,3 +94,8 @@ export const getRoleByArtist = async(id) => {
     const {data} = await $host.get('api/role/artist/' + id)
     return data
 }
+
+export const getDocument = async() => {
+    const {data} = await $host.get('api/document')
+    return data
+}

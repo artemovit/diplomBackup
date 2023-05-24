@@ -1,13 +1,13 @@
 const {Documents} = require("../models/models")
 const uuid = require('uuid')
-const path = require('path')
+const pathh = require('path')
 
 class DocumentController {
     async create(req, res){
-        const {name} = req.body()
+        const {name} = req.body
         const {path} = req.files
         let fileName = uuid.v4() + ".pdf"
-        path.mv(path.resolve(__dirname, '..', 'static', fileName))
+        path.mv(pathh.resolve(__dirname, '..', 'static', fileName))
 
         const document = await Documents.create({name, path: fileName})
         return res.json(document)
