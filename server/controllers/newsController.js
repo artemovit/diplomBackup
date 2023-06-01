@@ -4,13 +4,18 @@ const path = require('path')
 const ApiError = require("../error/ApiError")
 
 class NewsController {
-    async create(req, res) {
+    async create(req, res, next) {
+        try{
         const { title, discription } = req.body
         const { mainPhoto } = req.files
         let fileName = uuid.v4() + ".jpg"
         mainPhoto.mv(path.resolve(__dirname, '..', 'static', fileName))
         const news = await News.create({ title, discription, mainPhoto: fileName })
         return res.json(news)
+        }
+        catch(e){
+            next(ApiError.badRequest(e.message))
+        }
     }
     async get(req, res) {
         let news;

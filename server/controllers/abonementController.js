@@ -16,8 +16,6 @@ class AbonementController {
         catch(e){
             next(ApiError.badRequest(e.message))
         }
-            
-        
     }
     async get(req, res) {
         let abonement;

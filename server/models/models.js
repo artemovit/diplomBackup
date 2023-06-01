@@ -6,8 +6,6 @@ const User = sequelize.define('user', {
     email: {type: DataTypes.STRING, unique:true, allowNull: false},
     password: {type: DataTypes.STRING, allowNull: false},
     role: {type: DataTypes.STRING, defaultValue: 'USER'},
-    birthday: {type: DataTypes.DATE, allowNull: false},
-    card_ID: {type: DataTypes.INTEGER, unique:true},
     name: {type: DataTypes.STRING, allowNull: false},
     surname: {type:DataTypes.STRING, allowNull: false},
 })
@@ -78,6 +76,13 @@ const News = sequelize.define('news', {
     mainPhoto: {type:DataTypes.STRING, allowNull: false},
 })
 
+const Order = sequelize.define('order', {
+    id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, allowNull: false},
+    phone: {type: DataTypes.STRING, unique:true, allowNull: false},
+    email: {type: DataTypes.STRING, unique:true, allowNull: false},
+})
+
 Repertuar.hasOne(RoleArtists)
 RoleArtists.belongsTo(Repertuar)
 Acter.hasOne(RoleArtists)
@@ -92,8 +97,13 @@ Afisha.belongsTo(Repertuar)
 Repertuar.hasMany(Abonement)
 Abonement.belongsTo(Repertuar)
 
+Repertuar.hasOne(Order)
+Order.belongsTo(Repertuar)
+Afisha.hasOne(Order)
+Order.belongsTo(Afisha)
+
 module.exports = {
-    User, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists, News
+    User, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists, News, Order
 }
 
 

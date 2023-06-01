@@ -9,8 +9,8 @@ class RoleArtistsController {
         try{
         const {name, aid, rid } = req.body
 
-        const role = await RoleArtists.create({name, aid, rid})
-        return res.json(role)
+        const role = await dbPool.query(`insert into roleartists (title, rid, aid, createdat, updatedat) values('${name}', ${rid}, ${aid} , now(), now())`)
+        return res.json(role.rows)
         }
         catch(e){
             next(ApiError.badRequest(e.message))

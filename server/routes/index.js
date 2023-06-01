@@ -11,6 +11,7 @@ const feedbackRouter = require('./feetbackRouter')
 const photosRouter = require('./photosRouter')
 const roleRouter = require('./roleRouter')
 const newsRouter = require('./newsRouter')
+const ordersRouter = require('./ordersRouter')
 
 
 router.use('/user', userRouter)
@@ -23,5 +24,6 @@ router.use('/feedback', feedbackRouter)
 router.use('/photos', photosRouter)
 router.use('/role', roleRouter)
 router.use('/news', newsRouter)
+router.use('/orders', ordersRouter)
 
 module.exports = router

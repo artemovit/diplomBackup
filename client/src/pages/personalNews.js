@@ -24,7 +24,7 @@ const personalNews = observer( () => {
                     </div>
                 </div>
                 <div class="spect_discrp">
-                    <h2 >Описание</h2>
+                    
                     {news.discription}
                 </div>
             </MediaQuery>
@@ -40,7 +40,7 @@ const personalNews = observer( () => {
                     </div>
                 </div>
                 <div class="spect_discrp" style={{margin: '30px'}}>
-                    <h2 >Описание</h2>
+                    
                     {news.discription}
                 </div>
             </MediaQuery>

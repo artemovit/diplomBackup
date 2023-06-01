@@ -1,15 +1,12 @@
 const ApiError = require("../error/ApiError")
-const sequelize = require('../db')
-const { Repertuar } = require('../models/models')
-const { Afisha } = require("../models/models")
 const dbPool = require("../dbPool")
 
 class AfishaController {
     async create(req, res, next) {
         try {
-            const { day, cenz, pushka, time, rid } = req.body
-            const currentDay = await Afisha.create({ day, cenz, pushka, time, rid})
-            return res.json(currentDay)
+            const { day, cenz, pushka, rid } = req.body
+            const currentDay = await dbPool.query(`insert into afishas (day, cenz, pushka, rid, createdat, updatedat) values('${day}', '${cenz}', ${pushka}, ${rid}, now(), now())`)
+            return res.json(currentDay.rows)
         }
         catch (e) {
             next(ApiError.badRequest(e.message))
@@ -24,7 +21,6 @@ class AfishaController {
         const afishas = await dbPool.query(`SELECT *, repertuars.name, repertuars.author FROM afishas JOIN repertuars ON afishas.rid = repertuars.id WHERE afishas.day >= current_date limit 4`);
         return res.json(afishas.rows)
     }
-
 
     async getForSpect(req,res){
         const {id} = req.params
