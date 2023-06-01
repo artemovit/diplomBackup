@@ -49,7 +49,6 @@ const News = observer(() => {
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }} >
                     {datas.news.map(news =>
                         <ItemSpect key={news.id} onClick={() => navigate(NEWS_ROUTE + '/' + news.id)}>
-
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + news.mainPhoto} />
                                 <h3 style={{fontSize: '15px'}}>{news.title}</h3>
@@ -63,10 +62,6 @@ const News = observer(() => {
 
             <MediaQuery maxWidth={1279}>
                 <h1 style={{ margin: '6%', fontSize: '40px' }}>Репертуар</h1>
-                <Grid class="mouth_repertuar" container rowSpacing={1}>
-                    <Item style={{ fontSize: '15px' }}>Текущий репертуар</Item>
-                    <Item style={{ fontSize: '15px' }}> Детские спектакли</Item>
-                </Grid>
 
                 <Grid container sx={{ justifyContent: 'center', margin: '0px', border: 'none' }}>
                     {datas.news.map(news =>

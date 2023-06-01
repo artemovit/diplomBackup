@@ -1,5 +1,4 @@
 import auth from '../pages/auth'
-import backet from '../pages/backet'
 import index from '../pages/index'
 import repertuar from '../pages/repertuar'
 import artists from '../pages/artists'
@@ -15,10 +14,12 @@ import admin from '../pages/admin'
 import news from '../pages/news'
 import personalNews from '../pages/personalNews'
 import docs from '../pages/document'
+import mgn from '../pages/mgn'
+import tickets from '../pages/tickets'
+import rules from '../pages/rules'
 
 
 import { ADMIN_AUTH_ROUTE } from '../utils/consts'
-import { BACKET_ROUTE } from '../utils/consts'
 import { AFISHA_ROUTE } from '../utils/consts'
 import { REPERTUAR_ROUTE } from '../utils/consts'
 import { ARTIST_ROUTE } from '../utils/consts'
@@ -33,13 +34,15 @@ import { SPECTACLE_ROUTE } from '../utils/consts'
 import {ADMIN_ROUTE} from '../utils/consts'
 import { NEWS_ROUTE } from '../utils/consts'
 import { DOCS_ROUTE } from '../utils/consts'
+import { MGN_ROUTE } from '../utils/consts'
+import { TICKET_ROUTE } from '../utils/consts'
+import { RULES_ROUTE } from '../utils/consts'
 
 
 
 export const authRoutes = [
     {
-        path: BACKET_ROUTE,
-        Component: backet
+        
     },
 
 ]
@@ -108,5 +111,17 @@ export const publicRoutes = [
     {
         path: DOCS_ROUTE,
         Component: docs
+    },
+    {
+        path: MGN_ROUTE,
+        Component: mgn
+    },
+    {
+        path: TICKET_ROUTE,
+        Component: tickets
+    },
+    {
+        path: RULES_ROUTE,
+        Component: rules
     }
 ]

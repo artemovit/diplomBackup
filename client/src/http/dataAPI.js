@@ -65,6 +65,11 @@ export const createNews = async (title, discription, mainPhoto) => {
     return data
 }
 
+export const createOrder = async(spect, date, name, email) => {
+    const {data} = await $host.post('api/orders', {spect, date, name, email})
+    return data
+}
+
 export const getNews = async() => {
     const {data} = await $host.get('api/news')
     return data

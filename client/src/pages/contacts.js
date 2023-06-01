@@ -25,7 +25,6 @@ export default function () {
 })
 )
 
-  const { user } = useContext(Context)
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -194,6 +193,64 @@ export default function () {
             <iframe src="https://yandex.ru/map-widget/v1/?ll=30.335838%2C59.934241&mode=routes&rtext=59.933812%2C30.332447~59.934140%2C30.337858&rtt=pd&ruri=ymapsbm1%3A%2F%2Ftransit%2Fstop%3Fid%3Dstation__9805929~ymapsbm1%3A%2F%2Forg%3Foid%3D1047815977&z=18.93" width="560" height="400" frameborder="1" allowfullscreen="true" style={{ position: 'relative' }}></iframe>
           </div>
         </div>
+        <h2>Администрация театра</h2>
+            <Grid container sx={{justifyContent: 'center'}} >
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Директор театра 
+                                  <br/>Фрадин Алексей Евгеньевич</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Художественный руководитель театра 
+                                  <br/>Казакова Татьяна Сергеевна</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Заместитель директора по общим вопросам 
+                                  <br/>Богданова Евгения Александровна</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Заместитель директора по работе со зрителями 
+                                  <br/>Селуков Алексей Евгеньевич</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Заведующий художественно-постановочной частью 
+                                  <br/>Мелешкин Анатолий Владимирович</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Начальник отдела по развитию и связям с общественностью
+                                  <br/>Гриб Анастасия Сергеевна</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Главный бухгалтер
+                                  <br/>Мусиенко Анастасия Викторовна</h3>
+                                <span class="author">8 (812) 314-25-01</span>
+                            </div>
+                        </ItemSpect>
+                        <ItemSpect>
+                            <div class="product-item">
+                                <h3>Администраторы </h3>
+                                <span class="author">8 (812) 314-26-10</span>
+                            </div>
+                        </ItemSpect>
+                </Grid>
       </MediaQuery>
     </div>
 

@@ -79,8 +79,10 @@ const News = sequelize.define('news', {
 const Order = sequelize.define('order', {
     id: {type:DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, allowNull: false},
-    phone: {type: DataTypes.STRING, unique:true, allowNull: false},
-    email: {type: DataTypes.STRING, unique:true, allowNull: false},
+    phone: {type: DataTypes.STRING, allowNull: false},
+    email: {type: DataTypes.STRING, allowNull: false},
+    date: {type: DataTypes.DATE, allowNull: false},
+    spect: {type:DataTypes.STRING, allowNull: false}
 })
 
 Repertuar.hasOne(RoleArtists)
@@ -96,11 +98,6 @@ Afisha.belongsTo(Repertuar)
 
 Repertuar.hasMany(Abonement)
 Abonement.belongsTo(Repertuar)
-
-Repertuar.hasOne(Order)
-Order.belongsTo(Repertuar)
-Afisha.hasOne(Order)
-Order.belongsTo(Afisha)
 
 module.exports = {
     User, Repertuar, Acter, Documents, Feedback, Photos, Afisha, Abonement, RoleArtists, News, Order

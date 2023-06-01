@@ -46,11 +46,6 @@ const Repertuar = observer( () => {
             <MediaQuery minWidth={1280}>
                 <h1>Репертуар</h1>
 
-                <Grid class="mouth_repertuar" container rowSpacing={1}>
-                    <Item>Текущий репертуар</Item>
-                    <Item>Детские спектакли</Item>
-                </Grid>
-
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none' }} >
                     {datas.repertuar.map(repertuar =>
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>
@@ -68,11 +63,7 @@ const Repertuar = observer( () => {
 
             <MediaQuery maxWidth={1279}>
                 <h1 style={{ margin: '6%', fontSize: '40px' }}>Репертуар</h1>
-                <Grid class="mouth_repertuar" container rowSpacing={1}>
-                    <Item style={{ fontSize: '15px' }}>Текущий репертуар</Item>
-                    <Item style={{ fontSize: '15px' }}> Детские спектакли</Item>
-                </Grid>
-
+            
                 <Grid container sx={{ justifyContent: 'center', margin: '0px', border: 'none' }}>
                 {datas.repertuar .map(repertuar =>
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>

@@ -14,6 +14,7 @@ export default class DataStore {
         this._photo = []
         this._roleBySpect = []
         this._document = []
+        this._orderAfisha = []
         makeAutoObservable(this)
     }
 
@@ -53,6 +54,9 @@ export default class DataStore {
     setDocument(document){
         this._document = document
     }
+    setOrderAfisha(orderAfisha){
+        this._orderAfisha = orderAfisha
+    }
     get repertuar() {
         return this._repertuar
     }
@@ -88,5 +92,8 @@ export default class DataStore {
     }
     get document(){
         return this._document
+    }
+    get orderAfisha(){
+        return this._orderAfisha
     }
 }

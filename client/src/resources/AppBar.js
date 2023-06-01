@@ -14,7 +14,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
-import { AFISHA_ROUTE } from '../utils/consts'
+import { AFISHA_ROUTE, RULES_ROUTE, TICKET_ROUTE } from '../utils/consts'
 import { REPERTUAR_ROUTE } from '../utils/consts'
 import { ARTISTS_ROUTE } from '../utils/consts'
 import { HISTORY_ROUTE } from '../utils/consts'
@@ -24,6 +24,7 @@ import { AKIMOV_ROUTE } from '../utils/consts'
 import { KAZAKOVA_ROUTE } from '../utils/consts'
 import { NEWS_ROUTE } from '../utils/consts'
 import { DOCS_ROUTE } from '../utils/consts'
+import { MGN_ROUTE } from '../utils/consts'
 
 
 
@@ -66,21 +67,17 @@ export default function () {
   `;
 
     return (
-
         <div>
             <MediaQuery minWidth={1280}>
-
-
                 <header>
                     <div class="header_section">
-
                         <Button href="/" class="header_item">Афиша</Button>
                         <Button class="header_item" href={REPERTUAR_ROUTE}>Репертуар</Button>
                         <Button class="header_item" href={ARTISTS_ROUTE}>Артисты</Button>
 
                         <Button class="header_item" onClick={handleClick}>О театре</Button>
                         <div class="header_item headerButton"><a href={AFISHA_ROUTE}><img src={logo} /></a></div>
-                        <Button class="header_item">Информация для МГН</Button>
+                        <Button class="header_item" href={MGN_ROUTE}>Информация для МГН</Button>
                         <Button class="header_item" onClick={handleMenuClick}>Зрителям</Button>
                         <Button class="header_item" href={NEWS_ROUTE}>Новости</Button>
                         <Button class="header_item" href={CONTACTS_ROUTE}>Контакты</Button>
@@ -93,8 +90,8 @@ export default function () {
                             <MenuItem component="a" href={DOCS_ROUTE}>Документы</MenuItem>
                         </Menu>
                         <Menu id="ZritelyamMenu" anchorEl={anchorE2} keepMounted open={Boolean(anchorE2)} onClose={handleClose}>
-                            <MenuItem onClick={handleClose}>Покупка и возврат билетов</MenuItem>
-                            <MenuItem onClick={handleClose}>Правила посещения театра</MenuItem>
+                            <MenuItem component="a" href={TICKET_ROUTE}>Покупка и возврат билетов</MenuItem>
+                            <MenuItem component="a" href={RULES_ROUTE}>Правила посещения театра</MenuItem>
                         </Menu>
                     </div>
                 </header >
@@ -107,7 +104,7 @@ export default function () {
                     <IconButton sx={{ color: '#FFF' }} onClick={handleBurgerClick}><MenuIcon /></IconButton>
 
                     <div class="header_item headerButton"><a href="/"><img src={logo} width={100} /></a></div>
-                    <IconButton sx={{ color: '#FFF' }}><Telegram /></IconButton>
+                    <IconButton sx={{ color: '#FFF' }} href='https://t.me/akimovkomedia'><Telegram /></IconButton>
 
                     <Navigation clicked={click}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -129,13 +126,16 @@ export default function () {
                                 <a href={ARTISTS_ROUTE}>Артисты</a>
                             </ul>
                             <ul class="ul_burger">
-                                <a href="/">Информация для МГН</a>
+                                <a onClick={handleClick}>О театре</a>
+                            </ul>
+                            <ul class="ul_burger">
+                                <a href={MGN_ROUTE}>Информация для МГН</a>
                             </ul>
                             <ul class="ul_burger">
                                 <a href="/">Зрителям</a>
                             </ul>
                             <ul class="ul_burger">
-                                <a href="/">Новости</a>
+                                <a href={NEWS_ROUTE}>Новости</a>
                             </ul>
                             <ul class="ul_burger">
                                 <a href={CONTACTS_ROUTE}>Контакты</a>

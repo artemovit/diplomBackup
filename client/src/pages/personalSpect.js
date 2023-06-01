@@ -5,8 +5,13 @@ import MediaQuery from 'react-responsive';
 import { Carousel } from '../resources/Caroseul';
 import { useParams } from 'react-router-dom'
 import { Context } from '../index'
+import { Dialog } from '@mui/material'
+import { Button, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 
+
+import { createOrder } from '../http/dataAPI'
 import { getOneRepertuar } from '../http/dataAPI'
+import Select from '@mui/material/Select';
 import { observer } from 'mobx-react';
 import { getPhoto } from '../http/dataAPI';
 import { getSpectAfisha } from '../http/dataAPI';
@@ -16,9 +21,12 @@ import moment from 'moment'
 import 'moment/locale/ru'
 import { useNavigate } from 'react-router-dom'
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+
 
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
 
 
 const personalSpect = observer(() => {
@@ -44,6 +52,30 @@ const personalSpect = observer(() => {
     })
     )
 
+    const handleChange = (event) => {
+        setDate(event.target.value);
+    };
+
+    const [date, setDate] = useState('')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+
+    
+
+    const handleClickRegistration = () => {
+        setOpened(true);
+
+    }
+
+    const handleCloseRegistration = () => {
+        setOpened(false)
+    }
+
+    const handleClose = () => {
+        setOpened(false)
+    };
+    const [opened, setOpened] = React.useState(false);
+
     const navigate = useNavigate()
     const { datas } = useContext(Context)
     const [spect, setSpect] = useState({ info: [] })
@@ -55,6 +87,18 @@ const personalSpect = observer(() => {
         getRoleBySpect(id).then(data => datas.setRoleBySpect(data))
     }, [])
 
+    const registration = async () => {
+        try{
+            let data;
+            data = await createOrder(spect.name, date, name, email)
+            alert("Заявка успешно зарегистрирована!")
+            setOpened(false)
+        }
+        catch (e){
+            alert(e.response.data.message)
+        }
+    }
+    
     return (
         <div>
             <MediaQuery minWidth={1280}>
@@ -74,11 +118,12 @@ const personalSpect = observer(() => {
                                         <div class="afisha_item"><span class="day_afisha">{moment(spectAfisha.day).format('DD')}</span>{moment(spectAfisha.day).format('MMMM')}</div>
                                         <div class="afisha_item">{moment(spectAfisha.day).format('LT')}</div>
                                         {/* <div class="afisha_item"><img src={Pushka} /></div> */}
-                                        <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                                     </div>
                                 </ItemAfisha>
                             )}
+
                         </Grid>
+                        <div class="afisha_item" style={{ display: 'flex', justifyContent: 'center' }}><Button class="buy_button" onClick={handleClickRegistration}>Оставить заявку</Button></div>
                     </div>
                 </div>
                 <div class="spect_discrp">
@@ -112,6 +157,46 @@ const personalSpect = observer(() => {
                 </div>
             </MediaQuery>
 
+            <Dialog open={opened} onClose={handleCloseRegistration} aria-labelledby="form-dialog-title">
+
+                <DialogTitle id="form-dialog-title">Заказ билетов</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Введите данные для заказа билетов
+                    </DialogContentText>
+                    <TextField margin='dense' id="name" InputProps={{
+                        readOnly: true,
+                    }} defaultValue={spect.name} fullWidth />
+                    <FormControl fullWidth>
+                        <InputLabel>Выбор даты</InputLabel>
+                        <Select
+                            autoFocus
+                            value={date}
+                            onChange={handleChange}
+                            autoWidth
+                        >
+                            {datas.spectAfisha.map(spectAfisha =>
+                                <MenuItem value={spectAfisha.day} key={spectAfisha.id}>{moment(spectAfisha.day).format('LLL')}</MenuItem>
+                            )}
+
+                        </Select>
+                    </FormControl>
+
+                    <TextField margin='dense' 
+                    id="surname" 
+                    label="ФИО"
+                    onChange={e => setName(e.target.value)} fullWidth
+                     />
+                    <TextField margin='dense' id="phone" label="Адрес электронной почты"  onChange={e => setEmail(e.target.value)} type="email" fullWidth />
+
+                </DialogContent>
+
+                <DialogActions>
+                    <Button onClick={handleClose}>Выйти</Button>
+                    <Button onClick={registration}>Зарегистрировать</Button>
+                </DialogActions>
+            </Dialog>
+
             <MediaQuery maxWidth={1279}>
 
                 <div class="photo_spect" style={{ display: 'flex', justifyContent: 'center', margin: '30px', marginBottom: '0px' }}>
@@ -119,7 +204,7 @@ const personalSpect = observer(() => {
                 </div>
                 <div class="spect" style={{ margin: '40px', marginTop: '0px' }}>
                     <div>
-                        <h1 style={{ fontSize: '40px' }}>{spect.name}</h1>
+                        <h1 style={{ fontSize: '35px' }}>{spect.name}</h1>
                         <h2>{spect.author}</h2>
 
                         <h3>Пролжительность:</h3>
@@ -133,10 +218,11 @@ const personalSpect = observer(() => {
                                         <div class="afisha_item"><span class="day_afisha">{moment(spectAfisha.day).format('DD')}</span>{moment(spectAfisha.day).format('MMMM')}</div>
                                         <div class="afisha_item">{moment(spectAfisha.day).format('LT')}</div>
                                         {/* <div class="afisha_item"><img src={Pushka} /></div> */}
-                                        <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
+                                        
                                     </div>
                                 </ItemAfisha>
                             )}
+                            <div class="afisha_item"><Button class="buy_button" onClick={handleClickRegistration}>В избранное</Button></div>
                         </Grid>
                     </div>
                 </div>

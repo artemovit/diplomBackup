@@ -5,9 +5,9 @@ const dbPool = require('../dbPool')
 class orderController {
     async create(req, res, next){
         try{
-            const {name, phone, email, rid, afid} = req.body
-            const currentOrder = await Order.create({name, phone, email, rid, afid})
-            return res.json(currentOrder)
+            const {name, phone, email, date, spect} = req.body
+            const currentOrder = await dbPool.query(`insert into orders (name, phone, email, createdat, updatedat, date, spect) values('${name}', '${phone}', '${email}', now(), now(), '${date}', '${spect}')`)
+            return res.json(currentOrder.rows)
         }
         catch (e){
             next(ApiError.badRequest(e.message))

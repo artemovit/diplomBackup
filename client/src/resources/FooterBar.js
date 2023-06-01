@@ -5,11 +5,6 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import { IconButton } from "@mui/material";
 import {
   Box,
-  Container,
-  Row,
-  Column,
-  FooterLink,
-  Heading,
 } from "./FooterStyles";
 
 const Footer = () => {
@@ -41,8 +36,8 @@ const Footer = () => {
 
           }}>Театр в социальных сетях
             <br />
-            <IconButton sx={{ color: '#FFF' }}><TelegramIcon /></IconButton>
-            <IconButton sx={{ color: '#FFF' }}><YouTubeIcon /></IconButton>
+            <IconButton href="https://t.me/akimovkomedia" sx={{ color: '#FFF' }}><TelegramIcon /></IconButton>
+            <IconButton href="https://www.youtube.com/channel/UC_KV1S2br4Td6W1xe0amuuQ" sx={{ color: '#FFF' }}><YouTubeIcon /></IconButton>
           </h1>
         </Box>
       </MediaQuery>
@@ -67,8 +62,8 @@ const Footer = () => {
           }}>
             Театр в социальных сетях
             <br />
-            <IconButton sx={{ color: '#FFF' }}><TelegramIcon /></IconButton>
-            <IconButton sx={{ color: '#FFF' }}><YouTubeIcon /></IconButton>
+            <IconButton href="https://t.me/akimovkomedia" sx={{ color: '#FFF' }}><TelegramIcon /></IconButton>
+            <IconButton href="https://www.youtube.com/channel/UC_KV1S2br4Td6W1xe0amuuQ" sx={{ color: '#FFF' }}><YouTubeIcon /></IconButton>
           </h1>
         </footer>
       </MediaQuery>
