@@ -1,5 +1,4 @@
 import { $authHost, $host } from "./index";
-import jwt_decode from 'jwt-decode'
 
 export const createRepertuar = async (name, author, director, discription, time, children, host, mainPhoto) => {
     const {data} = await $authHost.post('api/repertuar', {name, author, director, discription, time, children, host, mainPhoto})

@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Context } from '../index'
 import { Grid } from '@mui/material'
 import { styled } from '@mui/material/styles';
+import {getRepertuar} from '../http/dataAPI'
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -55,7 +56,11 @@ export default function () {
     const handleChange = (event) => {
         setAge(event.target.value);
     };
-    const { data } = useContext(Context)
+    const { datas } = useContext(Context)
+    
+    useEffect( () => {
+        getRepertuar().then(data => datas.setRepertuar(data))
+    },[])
 
     return (
         <div>
@@ -90,7 +95,7 @@ export default function () {
                             autoWidth
                             label="Выбор спекаткля"
                         >
-                            {data.repertuar.map(repertuar =>
+                            {datas.repertuar.map(repertuar =>
                                 <MenuItem value={repertuar.name} key={repertuar.id}>{repertuar.name}</MenuItem>
                             )}
                             

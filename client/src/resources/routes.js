@@ -42,16 +42,12 @@ import { RULES_ROUTE } from '../utils/consts'
 
 export const authRoutes = [
     {
-        
-    },
-
+        path: ADMIN_ROUTE,
+        Component: admin
+    },  
 ]
 
 export const publicRoutes = [
-    {
-        path: ADMIN_ROUTE,
-        Component: admin
-    },
     {
         path: NEWS_ROUTE,
         Component: news
