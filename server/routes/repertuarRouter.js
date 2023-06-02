@@ -3,7 +3,7 @@ const router = new Router()
 const repertuarController = require('../controllers/repertuarController')
 const checkRole = require('../middleware/checkRoleMiddleware')
 
-router.post('/', checkRole('ADMIN'), repertuarController.create)
+router.post('/', repertuarController.create)
 router.get('/', repertuarController.get),
 router.get('/:id', repertuarController.getOne)
 

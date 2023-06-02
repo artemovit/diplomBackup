@@ -15,6 +15,7 @@ export default class DataStore {
         this._roleBySpect = []
         this._document = []
         this._orderAfisha = []
+        this._selectedSpect = {}
         makeAutoObservable(this)
     }
 
@@ -57,6 +58,9 @@ export default class DataStore {
     setOrderAfisha(orderAfisha){
         this._orderAfisha = orderAfisha
     }
+    setSelectedSpect(selectedSpect){
+        this._selectedSpect = selectedSpect
+    }
     get repertuar() {
         return this._repertuar
     }
@@ -95,5 +99,8 @@ export default class DataStore {
     }
     get orderAfisha(){
         return this._orderAfisha
+    }
+    get selectedSpect(){
+        return this._selectedSpect
     }
 }

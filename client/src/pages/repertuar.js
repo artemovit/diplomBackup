@@ -12,17 +12,6 @@ import {getRepertuar} from '../http/dataAPI'
 import { observer } from 'mobx-react';
 
 const Repertuar = observer( () => {
-    
-    const Item = styled(Paper)(({ theme }) => ({
-
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: 'black',
-        display: 'flex',
-        justifyContent: 'center',
-        border: 'none',
-        margin: '5px'
-    }));
 
     const ItemSpect = styled(Paper)(({ theme }) => ({
         padding: theme.spacing(1),
