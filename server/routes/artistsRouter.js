@@ -7,6 +7,8 @@ router.post('/', artistController.create)
 router.get('/', artistController.get)
 router.get('/grade/narod', artistController.getNarodny)
 router.get('/grade/deserved', artistController.getDeserved)
+router.get('/all', artistController.getAll)
 router.get('/:id', artistController.getOne)
+
 
 module.exports = router

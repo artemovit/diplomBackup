@@ -1,4 +1,4 @@
-const {RoleArtists} = require("../models/models")
+const {RoleArtists, Acter, Repertuar} = require("../models/models")
 const uuid = require('uuid')
 const path = require('path')
 const dbPool = require("../dbPool")
@@ -7,10 +7,10 @@ const ApiError = require("../error/ApiError")
 class RoleArtistsController {
     async create(req, res, next){
         try{
-        const {name, aid, rid } = req.body
+        const {title, repertuarId, acterId } = req.body
 
-        const role = await dbPool.query(`insert into roleartists (title, rid, aid, createdat, updatedat) values('${name}', ${rid}, ${aid} , now(), now())`)
-        return res.json(role.rows)
+        const role = await RoleArtists.create({title, repertuarId, acterId})
+        return res.json(role)
         }
         catch(e){
             next(ApiError.badRequest(e.message))
@@ -19,8 +19,12 @@ class RoleArtistsController {
     async getBySpect(req,res, next){
         try{
         const {id} = req.params
-        const role = await dbPool.query(`SELECT *, acters.name, acters.surname FROM roleartists JOIN acters ON roleartists.aid = acters.id where roleartists.rid = ${id}`)
-        return res.json(role.rows)
+        const role = await RoleArtists.findAll({
+            where:{repertuarId: id},
+            include: [{model: Acter, as: 'acter'}]
+        });
+        console.log(role)
+        return res.json(role)
         }
         catch(e){
             next(ApiError.badRequest(e.message))
@@ -29,8 +33,11 @@ class RoleArtistsController {
     async getByArtist(req,res, next){
         try{
         const {id} = req.params
-        const role = await dbPool.query(`SELECT * FROM roleartists JOIN repertuars ON roleartists.rid = repertuars.id where roleartists.aid = ${id}`)
-        return res.json(role.rows)
+        const role = await RoleArtists.findAll({
+            where: {acterId: id},
+            include: [{model: Repertuar, as: 'repertuar'}]
+        })
+        return res.json(role)
         }
         catch(e){
             next(ApiError.badRequest(e.message))

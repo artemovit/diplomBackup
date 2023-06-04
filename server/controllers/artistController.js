@@ -28,7 +28,15 @@ class ArtistController {
         })
         return res.json(artists)
     }
-    async getNarodny(req, res){
+
+    async getAll(req, res){
+        let artists;
+        artists = await Acter.findAll()
+        
+        return res.json(artists)
+    }
+
+    async getNarodny(req, res, next){
         try{
         let artist;
         artist = await Acter.findAll(
@@ -42,7 +50,7 @@ class ArtistController {
             next(ApiError.badRequest(e.message))
         }
     }
-    async getDeserved(req, res){
+    async getDeserved(req, res, next){
         
         let artistD;
         artistD = await Acter.findAll(
@@ -52,13 +60,18 @@ class ArtistController {
         )
         return res.json(artistD)
     }
-    async getOne(req, res){
+    async getOne(req, res, next){
+        try{
         const {id} = req.params
-        const artist = await Acter.findOne(
-            {where: {id}}, 
+        const artistK = await Acter.findOne(
+            {where: {id}} 
         )
-        return res.json(artist)
+        return res.json(artistK)
     }
+    catch(e){
+        next(ApiError.badRequest(e.message))
+    }
+}
 }
 
 module.exports = new ArtistController()

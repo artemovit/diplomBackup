@@ -34,6 +34,7 @@ export default function () {
     try {
       let data;
       data = await registrDiscription(name, email, discription)
+      alert("Ваше обращение принято! Администраторы свяжутся в ближайшее время")
     }
     catch (e) {
       alert(e.response.data.message)

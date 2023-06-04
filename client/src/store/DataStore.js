@@ -16,6 +16,9 @@ export default class DataStore {
         this._document = []
         this._orderAfisha = []
         this._selectedSpect = {}
+        this._selectedArtist = {}
+        this._feedback = []
+        this._selectedFeedback = {}
         makeAutoObservable(this)
     }
 
@@ -61,6 +64,15 @@ export default class DataStore {
     setSelectedSpect(selectedSpect){
         this._selectedSpect = selectedSpect
     }
+    setFeedback(feedback){
+        this._feedback = feedback
+    }
+    setSelectedFeedback(feedback){
+        this._selectedFeedback = feedback
+    }
+    setSelectedArtist(artist){
+        this._selectedArtist = artist
+    }
     get repertuar() {
         return this._repertuar
     }
@@ -102,5 +114,14 @@ export default class DataStore {
     }
     get selectedSpect(){
         return this._selectedSpect
+    }
+    get feedback(){
+        return this._feedback
+    }
+    get selectedFeedback(){
+        return this._selectedFeedback
+    }
+    get selectedArtist(){
+        return this._selectedArtist
     }
 }

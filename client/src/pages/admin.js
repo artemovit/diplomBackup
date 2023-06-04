@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../index'
 import { Grid } from '@mui/material'
 import { styled } from '@mui/material/styles';
-import { createActer, createAfisha, getRepertuar } from '../http/dataAPI'
+import { createActer, createAfisha, createRole, deleteFeedback, getAllActers, getFeedback, getOrder, getRepertuar } from '../http/dataAPI'
 import { createRepertuar } from '../http/dataAPI';
 
 import Table from '@mui/material/Table';
@@ -60,9 +60,6 @@ const Admin = observer(() => {
         return { name, calories, fat, carbs, protein };
     }
 
-  
-
-
     const Item = styled(Paper)(({ theme }) => ({
 
         padding: theme.spacing(1),
@@ -79,7 +76,10 @@ const Admin = observer(() => {
     const [open, setOpen] = React.useState(false);
     const [openRepertuar, setRepertuarOpen] = React.useState(false);
     const [openActer, setActerOpen] = React.useState(false);
+    const [openRole, setRoleOpen] = React.useState(false);
     const [openTableActer, setTableActerOpen] = React.useState(false);
+    const [openTableOrder, setTableOrderOpen] = React.useState(false);
+    const [openTableFeedback, setTableFeedbackOpen] = React.useState(false);
 
     // Спектакль
     const [mainPhoto, setMainPhoto] = useState(null)
@@ -130,21 +130,38 @@ const Admin = observer(() => {
     const [date, setDate] = useState('')
     const [cenz, setCenz] = useState('')
     const [pushka, setPushka] = useState(false)
-    const [rid, setRid] = useState(null)
 
     const addAfisha = async () => {
         const formData = new FormData()
         formData.append('day', date)
         formData.append('cenz', cenz)
         formData.append('pushka', pushka)
-        formData.append('rid', datas.selectedSpect.id)
+        formData.append('repertuarId', datas.selectedSpect.id)
 
         createAfisha(formData).then(handleRepertuarClose)
+    }
+
+    //Роли
+    const [nameRole, setNameRole] = useState('')
+    const formData = new FormData()
+    const addRole = async() => {
+    formData.append('title', nameRole)
+    formData.append('repertuarId', datas.selectedSpect.id)
+    formData.append('acterId', datas.selectedArtist.id)
+
+    createRole(formData).then(handleRepertuarClose)
+    }
+
+    const delFeedback = async () => {
+        deleteFeedback(datas.selectedFeedback.id).then(alert("Запись успешно удалена!"))
     }
 
 
     const handleActerOpen = () => {
         setActerOpen(true);
+    }
+    const handleRoleOpen = () => {
+        setRoleOpen(true)
     }
     const handleRepertuarOpen = () => {
         setRepertuarOpen(true);
@@ -155,9 +172,16 @@ const Admin = observer(() => {
     const handleTableActerOpen = () => {
         setTableActerOpen(true);
     }
+    const handleTableOrderOpen = () => {
+        setTableOrderOpen(true);
+    }
+    const handleTableFeedBackOpen = () => {
+        setTableFeedbackOpen(true);
+    }
     const handleRepertuarClose = () => {
         setRepertuarOpen(false)
         setActerOpen(false)
+        setRoleOpen(false)
 
         setOpen(false)
         alert("Запись успешно добавлена!")
@@ -165,9 +189,12 @@ const Admin = observer(() => {
 
     const handleClose = () => {
         setOpen(false);
+        setRoleOpen(false)
         setRepertuarOpen(false);
         setActerOpen(false);
         setTableActerOpen(false);
+        setTableOrderOpen(false);
+        setTableFeedbackOpen(false);
     };
 
     const [age, setAge] = React.useState('');
@@ -177,13 +204,13 @@ const Admin = observer(() => {
         setChildren(event.target.checked);
         setHost(event.target.checked)
         setGrade(event.target.value)
-        setPushka(event.target.checked)
     };
-
-
 
     useEffect(() => {
         getRepertuar().then(data => datas.setRepertuar(data))
+        getOrder().then(data => datas.setOrderAfisha(data))
+        getFeedback().then(data => datas.setFeedback(data))
+        getAllActers().then(data => datas.setArtist(data))
     }, [])
 
     return (
@@ -197,8 +224,7 @@ const Admin = observer(() => {
                         <Item onClick={handleAfishaOpen}>Добавить спектакль в афишу</Item>
                         <Item onClick={handleRepertuarOpen}>Добавить спектакль</Item>
                         <Item onClick={handleActerOpen}>Добавить актера</Item>
-                        <Item>Распределение Ролей</Item>
-                        <Item>Добавление спектаклей</Item>
+                        <Item onClick={handleRoleOpen}>Распределение Ролей</Item>
                         <Item>*что-то крутое*</Item>
                     </Grid>
                 </div>
@@ -209,10 +235,67 @@ const Admin = observer(() => {
                         <Item onClick={handleTableActerOpen}>Просмотр репертуара</Item>
                         <Item>Просмотр труппы</Item>
                         <Item>Просмотр афиши</Item>
+                        <Item onClick={handleTableOrderOpen}>Просмотр заявок</Item>
+                        <Item onClick={handleTableFeedBackOpen}>Просмотр обращений</Item>
                     </Grid>
                 </div>
 
             </div>
+
+            <Dialog open={openRole} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Распределение ролей</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Введите данные о роли:
+                    </DialogContentText>
+
+                    <TextField margin='dense' id="role" label="Имя роли" onChange={e => setNameRole(e.target.value)} fullWidth />
+
+                    <FormControl fullWidth>
+                        <InputLabel>Выбор спектакля</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-autowidth-label"
+                            id="demo-simple-select-autowidth"
+                            value={age}
+                            onChange={handleChange}
+                            autoWidth
+                            label="Выбор спекаткля"
+                        >
+                            {datas.repertuar.map(repertuar =>
+                                <MenuItem value={repertuar.name}
+                                    key={repertuar.id}
+                                    onClick={() => datas.setSelectedSpect(repertuar)}>{repertuar.name}</MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
+
+                    <FormControl fullWidth>
+                        <InputLabel>Выбор артиста</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-autowidth-label"
+                            id="demo-simple-select-autowidth"
+                            value={age}
+                            onChange={handleChange}
+                            autoWidth
+                            label="Выбор артиста"
+                        >
+                            {datas.acters.map(artist =>
+                                <MenuItem value={artist.name}
+                                    key={artist.id}
+                                    onClick={() => datas.setSelectedArtist(artist)}>{artist.name} + ' ' + {artist.surname}</MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
+
+
+                    
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Выйти</Button>
+                    <Button onClick={addRole}>Сохранить</Button>
+                </DialogActions>
+            </Dialog>
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Добавление афиши</DialogTitle>
@@ -358,7 +441,7 @@ const Admin = observer(() => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {datas.repertuar.map(repertuar => 
+                                {datas.repertuar.map(repertuar =>
                                     <StyledTableRow key={repertuar.id}>
                                         <StyledTableCell component="th" scope="row">
                                             {repertuar.name}
@@ -378,6 +461,96 @@ const Admin = observer(() => {
                 <DialogActions>
                     <Button onClick={handleClose}>Выйти</Button>
                     <Button onClick={handleClose}>Сохранить</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog open={openTableOrder} onClose={handleClose} fullScreen aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Просмотр заявок:</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Список заявок на билеты:
+                    </DialogContentText>
+
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell>Имя заказсчика</StyledTableCell>
+                                    <StyledTableCell>Электронная почта</StyledTableCell>
+                                    <StyledTableCell>Дата спектакля</StyledTableCell>
+                                    <StyledTableCell>Название спектакля</StyledTableCell>
+                                    <StyledTableCell>Время отправки заявки</StyledTableCell>
+                                    <StyledTableCell>Управление заявкой</StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {datas.orderAfisha.map(orderAfisha =>
+                                    <StyledTableRow key={orderAfisha.id}>
+                                        <StyledTableCell component="th" scope="row">
+                                            {orderAfisha.name}
+                                        </StyledTableCell>
+                                        <StyledTableCell>{orderAfisha.email}</StyledTableCell>
+                                        <StyledTableCell>{orderAfisha.date}</StyledTableCell>
+                                        <StyledTableCell>{orderAfisha.spect}</StyledTableCell>
+                                        <StyledTableCell>{orderAfisha.createdAt}</StyledTableCell>
+                                        <StyledTableCell>
+
+                                            <div class="afisha_item"><Button class="buy_button">Удалить</Button></div>
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Выйти</Button>
+                    <Button onClick={handleClose}>Сохранить</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog open={openTableFeedback} onClose={handleClose} fullScreen aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Просмотр обратной связи:</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Список оставленных обращений:
+                    </DialogContentText>
+
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell>Имя автора</StyledTableCell>
+                                    <StyledTableCell>Электронная почта</StyledTableCell>
+                                    <StyledTableCell>Сообщение</StyledTableCell>
+                                    <StyledTableCell>Время отправки сообщения</StyledTableCell>
+                                    <StyledTableCell>Управление сообщением</StyledTableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {datas.feedback.map(feedback =>
+                                    <StyledTableRow key={feedback.id}>
+                                        <StyledTableCell component="th" scope="row">
+                                            {feedback.name}
+                                        </StyledTableCell>
+                                        <StyledTableCell>{feedback.email}</StyledTableCell>
+                                        <StyledTableCell>{feedback.discription}</StyledTableCell>
+                                        <StyledTableCell>{feedback.createdAt}</StyledTableCell>
+                                        <StyledTableCell>
+
+                                            <div class="afisha_item"><Button class="buy_button" onClick={() => datas.setSelectedFeedback(feedback)}>Удалить</Button></div>
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Выйти</Button>
+                    <Button onClick={delFeedback}>Сохранить</Button>
                 </DialogActions>
             </Dialog>
 

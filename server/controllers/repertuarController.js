@@ -26,7 +26,7 @@ class RepertuarController {
     async getOne(req, res){
         const {id} = req.params
         const spectacle = await Repertuar.findOne(
-            {where: {id}}, 
+            {where: {id}} 
             
         )
         return res.json(spectacle)

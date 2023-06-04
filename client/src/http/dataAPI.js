@@ -39,8 +39,13 @@ export const getOneActer = async (id) => {
     return data
 }
 
-export const createAfisha = async (day, cenz, pushka, rid) => {
-    const { data } = await $authHost.post('api/afisha', day, cenz, pushka, rid)
+export const getAllActers = async() =>{
+    const {data} = await $host.get('api/artist/all')
+    return data
+}
+
+export const createAfisha = async (afisha) => {
+    const { data } = await $authHost.post('api/afisha', afisha)
     return data
 }
 
@@ -74,6 +79,11 @@ export const createOrder = async (spect, date, name, email) => {
     return data
 }
 
+export const getOrder = async () => {
+    const {data} = await $host.get('api/orders')
+    return data
+}
+
 export const getNews = async () => {
     const { data } = await $host.get('api/news')
     return data
@@ -104,7 +114,22 @@ export const getRoleByArtist = async (id) => {
     return data
 }
 
+export const createRole = async (role) => {
+    const {data} = await $host.post('api/role' + role)
+    return data
+}
+
 export const getDocument = async () => {
     const { data } = await $host.get('api/document')
+    return data
+}
+
+export const getFeedback = async () => {
+    const {data} = await $host.get('api/feedback')
+    return data
+}
+
+export const deleteFeedback = async (id) => {
+    const {data} = await $host.delete('api/feedback/del/' + id)
     return data
 }

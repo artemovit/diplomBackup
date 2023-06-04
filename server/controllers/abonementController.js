@@ -4,7 +4,7 @@ const path = require('path')
 const ApiError = require("../error/ApiError")
 
 class AbonementController {
-    async create(req, res) {
+    async create(req, res, next) {
         try{
             const { name, pushka, discription, repertuarId } = req.body
             const { mainPhoto } = req.files

@@ -17,6 +17,22 @@ class FeedbackController {
         feed = await Feedback.findAll()
         return res.json(feed)
     }
+    
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params;
+            const feetback = await Feedback.findOne({
+                where: { id }
+            });
+            if (!feetback) {
+                return res.status(404).send('Order not found');
+            }
+            await feetback.destroy();
+            return res.sendStatus(204); //no content
+        } catch (e) {
+            next(ApiError.badRequest(e.message));
+        }
+    }
 }
 
 module.exports = new FeedbackController()

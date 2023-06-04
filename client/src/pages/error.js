@@ -8,12 +8,17 @@ export default function error() {
     <div>
       <MediaQuery minWidth={1280}>
       <div class="error">
-        <h1>Ошибка!</h1>
+      <h1>
+        Если после продажи своей души дьяволу человек продолжает пребывать в ничтожестве, мы можем оценить, чего стоила эта душа.
+        </h1>
+        <h1>Николай Павлович Акимов </h1>
+        
         </div>
         <div class="error">
-        <h2>Наверно, вы здесь по ошибке</h2>
+          <h1>Ошибка 404</h1>
+        <h2 style={{margin: '3%'}}>Наверно, вы здесь по ошибке</h2>
         </div>
-        <div class="error">
+        <div class="error" style={{margin: '3%'}}>
         <Button href="/" class="header_item">Перейти на главную</Button>
         </div>
     </MediaQuery>

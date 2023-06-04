@@ -35,7 +35,8 @@ const index = observer(() => {
         display: 'flex',
         justifyContent: 'center',
         border: 'none',
-        margin: '10px'
+        margin: '10px',
+       
     }))
 
     const navigate = useNavigate()
@@ -57,9 +58,9 @@ const index = observer(() => {
                 <Grid container sx={{ justifyContent: 'center', margin: '37px', border: 'none', marginTop: '3px' }}>
                     {datas.selectedAfisha.map(selectedAfisha =>
                         <ItemSpect key={selectedAfisha.id}>
-                            <div class="product-item" onClick={() => navigate(SPECTACLE_ROUTE + '/' + selectedAfisha.rid)}>
-                                <img src={process.env.REACT_APP_API_URL + selectedAfisha.mainPhoto} ></img>
-                                <h3>{selectedAfisha.name}</h3>
+                            <div class="product-item" onClick={() => navigate(SPECTACLE_ROUTE + '/' + selectedAfisha.repertuar.id)}>
+                                <img src={process.env.REACT_APP_API_URL + selectedAfisha.repertuar.mainPhoto} ></img>
+                                <h3>{selectedAfisha.repertuar.name}</h3>
                                 <span class="price">{moment(selectedAfisha.day).format('DD MMMM')}</span>
                                 <div class="afisha_item"><Button class="buy_button">Перейти</Button></div>
                             </div>
@@ -71,10 +72,10 @@ const index = observer(() => {
                 <Grid container sx={{ justifyContent: 'center', margin: '0 px', border: 'none', width: 'none' }}>
                     {datas.afisha.map(afisha =>
                         <ItemAfisha key={afisha.id}>
-                            <div class="afisha_mouth" onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.rid)}>
+                            <div class="afisha_mouth" onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.repertuar.id)}>
                                 <div class="afisha_item"><span class="day_afisha">{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
                                 <div class="afisha_item">
-                                    {afisha.name}<br />{afisha.author}</div>
+                                    {afisha.repertuar.name}<br />{afisha.repertuar.author}</div>
                                 <div class="afisha_item"> {moment(afisha.day).format('LT')} </div>
                                 <div class="afisha_item"><img src={Pushka} /></div>
                                 <div class="afisha_item"><Button class="buy_button">Перейти</Button></div>
@@ -109,11 +110,11 @@ const index = observer(() => {
 
                     {datas.afisha.map(afisha =>
 
-                        <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.rid)}>
+                        <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.repertuar.id)} style={{width: '100%'}}>
                             <div class="afisha_mouth" style={{ width: '100%' }}>
-                                <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}><span class="day_afisha" style={{ fontSize: '30px' }}>{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
+                                <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px', marginRight: '20px' }}><span class="day_afisha" style={{ fontSize: '30px' }}>{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}>
-                                    {afisha.name}<br />{afisha.author}</div>
+                                    {afisha.repertuar.name}<br />{afisha.repertuar.author}</div>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}> {moment(afisha.day).format('LT')} </div>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}><img src={Pushka} /></div>
                             </div>
@@ -122,7 +123,6 @@ const index = observer(() => {
                 </Grid>
 
                 <h2 style={{ margin: '6%', fontSize: '25px' }}>Абонементы</h2>
-
                 <Grid container sx={{ justifyContent: 'center', border: 'none' }}>
                     {datas.abonement.map(abonement =>
 

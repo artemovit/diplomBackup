@@ -125,15 +125,11 @@ export default function () {
                             <ul class="ul_burger">
                                 <a href={ARTISTS_ROUTE}>Артисты</a>
                             </ul>
-                            <ul class="ul_burger">
-                                <a onClick={handleClick}>О театре</a>
-                            </ul>
+                            
                             <ul class="ul_burger">
                                 <a href={MGN_ROUTE}>Информация для МГН</a>
                             </ul>
-                            <ul class="ul_burger">
-                                <a href="/">Зрителям</a>
-                            </ul>
+            
                             <ul class="ul_burger">
                                 <a href={NEWS_ROUTE}>Новости</a>
                             </ul>

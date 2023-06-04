@@ -1,32 +1,58 @@
 const ApiError = require("../error/ApiError")
 const dbPool = require("../dbPool")
+const { Afisha, Repertuar } = require("../models/models")
+const { Op } = require('sequelize')
+const { Sequelize } = require("../db")
+
 
 class AfishaController {
     async create(req, res, next) {
         try {
-            const { day, cenz, pushka, rid } = req.body
-            const currentDay = await dbPool.query(`insert into afishas (day, cenz, pushka, rid, createdat, updatedat) values('${day}', '${cenz}', ${pushka}, ${rid}, now(), now())`)
-            return res.json(currentDay.rows)
+            const { day, cenz, pushka, repertuarId } = req.body
+            const currentDay = await Afisha.create({ day, cenz, pushka, repertuarId })
+            return res.json(currentDay)
         }
         catch (e) {
             next(ApiError.badRequest(e.message))
         }
     }
-    async get(req, res) { 
-        const afishas = await dbPool.query(`SELECT *, repertuars.name, repertuars.author FROM afishas JOIN repertuars ON afishas.rid = repertuars.id WHERE afishas.day >= current_date`);
-        return res.json(afishas.rows)
-    }
 
-    async getTopFourth(req, res) { 
-        const afishas = await dbPool.query(`SELECT *, repertuars.name, repertuars.author FROM afishas JOIN repertuars ON afishas.rid = repertuars.id WHERE afishas.day >= current_date limit 4`);
-        return res.json(afishas.rows)
-    }
-
-    async getForSpect(req,res){
-        const {id} = req.params
-        const afisha = await dbPool.query(`SELECT afishas.day, afishas.cenz, afishas.pushka FROM afishas WHERE afishas.rid = ${id} AND afishas.day >= current_date`)
-        return res.json(afisha.rows)
+    async get(req, res, next) {
+        try {
+            const today = new Date()
+            let afishas = await Afisha.findAll({
+                where: Sequelize.literal(`"day">='${today.toISOString()}'`),
+                include: [{ model: Repertuar, as: 'repertuar' }]
+            });
+            console.log(afishas)
+            return res.json(afishas)
+        }
+        catch (e) {
+            next(ApiError.badRequest(e.message))
         }
     }
+
+    async getTopFourth(req, res) {
+        const today = new Date()
+        let afishas = await Afisha.findAll({
+            where: Sequelize.literal(`"day">='${today.toISOString()}'`),
+            include: [{ model: Repertuar, as: 'repertuar' }],
+            limit: 4
+        });
+        console.log(afishas)
+        return res.json(afishas)
+    }
+
+    async getForSpect(req, res) {
+        const { id } = req.params
+        const afisha = await Afisha.findAll({
+            where: {
+                repertuarId: id,
+                day: {[Op.gte]: Date.now()}
+            }
+        })
+        return res.json(afisha)
+    }
+}
 
 module.exports = new AfishaController()
