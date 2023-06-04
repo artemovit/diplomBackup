@@ -45,7 +45,7 @@ export const getAllActers = async() =>{
 }
 
 export const createAfisha = async (afisha) => {
-    const { data } = await $authHost.post('api/afisha', afisha)
+    const { data } = await $host.post('api/afisha', afisha)
     return data
 }
 
@@ -115,7 +115,7 @@ export const getRoleByArtist = async (id) => {
 }
 
 export const createRole = async (role) => {
-    const {data} = await $host.post('api/role' + role)
+    const {data} = await $host.post('api/role/', role)
     return data
 }
 

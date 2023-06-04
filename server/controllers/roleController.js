@@ -1,7 +1,4 @@
 const {RoleArtists, Acter, Repertuar} = require("../models/models")
-const uuid = require('uuid')
-const path = require('path')
-const dbPool = require("../dbPool")
 const ApiError = require("../error/ApiError")
 
 class RoleArtistsController {
