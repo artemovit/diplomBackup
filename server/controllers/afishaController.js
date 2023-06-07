@@ -21,8 +21,11 @@ class AfishaController {
         try {
             const today = new Date()
             let afishas = await Afisha.findAll({
-                where: Sequelize.literal(`"day">='${today.toISOString()}'`),
+                
+                order: [
+                    ['id', 'ASC']],
                 include: [{ model: Repertuar, as: 'repertuar' }]
+                
             });
             console.log(afishas)
             return res.json(afishas)

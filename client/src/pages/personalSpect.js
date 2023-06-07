@@ -60,11 +60,8 @@ const personalSpect = observer(() => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
-
-
     const handleClickRegistration = () => {
         setOpened(true);
-
     }
 
     const handleCloseRegistration = () => {
@@ -140,7 +137,7 @@ const personalSpect = observer(() => {
 
                             </Grid>
                             {datas.spectAfisha.length > 0 ?
-                                    <div class="afisha_item"><Button class="buy_button" onClick={handleClickRegistration}>В избранное</Button></div>
+                                    <div class="afisha_item" style={{display: 'flex', justifyContent: 'center'}}><Button class="buy_button" onClick={handleClickRegistration}>В избранное</Button></div>
                                     :
                                     <div>Следите за обновлением афиши!</div>
                                 }
@@ -156,9 +153,11 @@ const personalSpect = observer(() => {
                             {datas.photo.map(photo =>
                                 <div class="spect_pic">
                                     <img src={process.env.REACT_APP_API_URL + photo.path} />
+                                    
                                 </div>
                             )}
                         </Carousel>
+                        
                     </div>
                     <div class="spect_artist">
                         <h2>Действующие лица</h2>
@@ -167,7 +166,7 @@ const personalSpect = observer(() => {
                                 <ItemArtist key={roleBySpect.id} onClick={() => navigate(ARTIST_ROUTE + '/' + roleBySpect.acter.id)}>
                                     <div class="product-item">
                                         <img src={process.env.REACT_APP_API_URL + roleBySpect.acter.mainPhoto} />
-                                        <h3>{roleBySpect.acter.name + ' ' + roleBySpect.acter.surname}</h3>
+                                        <h3 style={{fontWeight: 'bold'}}>{roleBySpect.acter.name + ' ' + roleBySpect.acter.surname}</h3>
                                         <p>{roleBySpect.title}</p>
                                     </div>
                                 </ItemArtist>
@@ -277,7 +276,7 @@ const personalSpect = observer(() => {
                                 <ItemArtist key={roleBySpect.id} onClick={() => navigate(ARTIST_ROUTE + '/' + roleBySpect.aid)}>
                                     <div class="product-item">
                                         <img src={process.env.REACT_APP_API_URL + roleBySpect.acter.mainPhoto} />
-                                        <h3>{roleBySpect.acter.name + ' ' + roleBySpect.acter.surname}</h3>
+                                        <h3 style={{fontWeight: 'bold'}}>{roleBySpect.acter.name + ' ' + roleBySpect.acter.surname}</h3>
                                         <p>{roleBySpect.title}</p>
                                     </div>
                                 </ItemArtist>

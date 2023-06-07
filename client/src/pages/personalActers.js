@@ -62,7 +62,7 @@ const personalActers = observer(() => {
                         <ItemSpect onClick={() => navigate(SPECTACLE_ROUTE + '/' + roleBySpect.repertuar.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + roleBySpect.repertuar.mainPhoto} />
-                                <h3>{roleBySpect.repertuar.name}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{roleBySpect.repertuar.name}</h3>
                                 <span class="author">{roleBySpect.title}</span>
                             </div>
                         </ItemSpect>
@@ -86,7 +86,7 @@ const personalActers = observer(() => {
                         <ItemSpect key={roleBySpect.repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + roleBySpect.repertuar.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + roleBySpect.repertuar.mainPhoto} />
-                                <h3>{roleBySpect.repertuar.name}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{roleBySpect.repertuar.name}</h3>
                                 <span class="author">{roleBySpect.title}</span>
                             </div>
                         </ItemSpect>

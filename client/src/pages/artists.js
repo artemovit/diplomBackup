@@ -45,7 +45,7 @@ const Artists = observer(() => {
                         <ItemArtist key={narodArtis.id} onClick={() => navigate(ARTIST_ROUTE + '/' + narodArtis.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + narodArtis.mainPhoto} />
-                                <h3>{narodArtis.name + ' ' + narodArtis.surname}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{narodArtis.name + ' ' + narodArtis.surname}</h3>
                             </div>
                         </ItemArtist>
                     )}
@@ -59,7 +59,7 @@ const Artists = observer(() => {
 
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + deservArtis.mainPhoto} />
-                                <h3>{deservArtis.name + ' ' + deservArtis.surname}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{deservArtis.name + ' ' + deservArtis.surname}</h3>
                             </div>
                         </ItemArtist>
                     )}
@@ -72,7 +72,7 @@ const Artists = observer(() => {
                         <ItemArtist key={artist.id} onClick={() => navigate(ARTIST_ROUTE + '/' + artist.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + artist.mainPhoto} />
-                                <h3>{artist.name + ' ' + artist.surname}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{artist.name + ' ' + artist.surname}</h3>
                             </div>
                         </ItemArtist>
                     )}
@@ -93,7 +93,7 @@ const Artists = observer(() => {
                         <ItemArtist key={narodArtis.id} onClick={() => navigate(ARTIST_ROUTE + '/' + narodArtis.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + narodArtis.mainPhoto} />
-                                <h3>{narodArtis.name + ' ' + narodArtis.surname}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{narodArtis.name + ' ' + narodArtis.surname}</h3>
                             </div>
                         </ItemArtist>
                     )}
@@ -109,7 +109,7 @@ const Artists = observer(() => {
 
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + deservArtis.mainPhoto} />
-                                <h3>{deservArtis.name + ' ' + deservArtis.surname}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{deservArtis.name + ' ' + deservArtis.surname}</h3>
                             </div>
                         </ItemArtist>
                     )}
@@ -124,7 +124,7 @@ const Artists = observer(() => {
                         <ItemArtist key={artist.id} onClick={() => navigate(ARTIST_ROUTE + '/' + artist.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + artist.mainPhoto} />
-                                <h3>{artist.name + ' ' + artist.surname}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{artist.name + ' ' + artist.surname}</h3>
                             </div>
                         </ItemArtist>
                     )}

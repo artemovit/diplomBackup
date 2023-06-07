@@ -40,7 +40,7 @@ const Repertuar = observer( () => {
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + repertuar.mainPhoto} />
-                                <h3>{repertuar.name}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{repertuar.name}</h3>
                                 <span class="author">{repertuar.author}</span>
                             </div>
                         </ItemSpect>
@@ -58,7 +58,7 @@ const Repertuar = observer( () => {
                         <ItemSpect key={repertuar.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + repertuar.id)}>
                             <div class="product-item">
                                 <img src={process.env.REACT_APP_API_URL + repertuar.mainPhoto} />
-                                <h3>{repertuar.name}</h3>
+                                <h3 style={{fontWeight: 'bold'}}>{repertuar.name}</h3>
                                 <span class="author">{repertuar.author}</span>
                             </div>
                         </ItemSpect>

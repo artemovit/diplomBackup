@@ -1,19 +1,17 @@
-import React, { useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import Pushka from '../resources/images/pushkin.png'
 import { Context } from '../index'
 
 import Paper from '@mui/material/Paper';
-import { Button} from '@mui/material';
+import { Button } from '@mui/material';
 import MediaQuery from 'react-responsive';
-import GradeIcon from '@mui/icons-material/Grade';
 import { observer } from 'mobx-react';
 import { getAficha, getFourthAfisha, getAbonement } from '../http/dataAPI';
 import { SPECTACLE_ROUTE } from '../utils/consts';
 import moment from 'moment'
 import { useNavigate } from 'react-router-dom'
-import 'moment/locale/ru'
 
 const index = observer(() => {
 
@@ -36,7 +34,7 @@ const index = observer(() => {
         justifyContent: 'center',
         border: 'none',
         margin: '10px',
-       
+
     }))
 
     const navigate = useNavigate()
@@ -49,6 +47,8 @@ const index = observer(() => {
         getAbonement().then(data => datas.setAbonement(data))
     }, [])
 
+    moment.locale('ru')
+
     return (
         <div>
             <MediaQuery minWidth={1280}>
@@ -60,7 +60,7 @@ const index = observer(() => {
                         <ItemSpect key={selectedAfisha.id}>
                             <div class="product-item" onClick={() => navigate(SPECTACLE_ROUTE + '/' + selectedAfisha.repertuar.id)}>
                                 <img src={process.env.REACT_APP_API_URL + selectedAfisha.repertuar.mainPhoto} ></img>
-                                <h3>{selectedAfisha.repertuar.name}</h3>
+                                <h3 style={{ fontWeight: 'bold' }}>{selectedAfisha.repertuar.name}</h3>
                                 <span class="price">{moment(selectedAfisha.day).format('DD MMMM')}</span>
                                 <div class="afisha_item"><Button class="buy_button">Перейти</Button></div>
                             </div>
@@ -75,7 +75,7 @@ const index = observer(() => {
                             <div class="afisha_mouth" onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.repertuar.id)}>
                                 <div class="afisha_item"><span class="day_afisha">{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
                                 <div class="afisha_item">
-                                    {afisha.repertuar.name}<br />{afisha.repertuar.author}</div>
+                                    <div style={{ fontWeight: 'bold' }}>{afisha.repertuar.name}</div>{afisha.repertuar.author}</div>
                                 <div class="afisha_item"> {moment(afisha.day).format('LT')} </div>
                                 <div class="afisha_item"><img src={Pushka} /></div>
                                 <div class="afisha_item"><Button class="buy_button">Перейти</Button></div>
@@ -90,7 +90,7 @@ const index = observer(() => {
                         <ItemSpect key={abonement.id}>
                             <div class="abonement_item">
                                 <img src={process.env.REACT_APP_API_URL + abonement.mainPhoto} />
-                                <h3>{abonement.name}</h3>
+                                <h3 style={{ fontWeight: 'bold' }}>{abonement.name}</h3>
                                 <span class="abonement_date">{abonement.discription}</span>
                                 <div class="afisha_item"><Button class="buy_button">Перейти</Button></div>
                             </div>
@@ -110,11 +110,11 @@ const index = observer(() => {
 
                     {datas.afisha.map(afisha =>
 
-                        <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.repertuar.id)} style={{width: '100%'}}>
+                        <ItemAfisha key={afisha.id} onClick={() => navigate(SPECTACLE_ROUTE + '/' + afisha.repertuar.id)} style={{ width: '100%' }}>
                             <div class="afisha_mouth" style={{ width: '100%' }}>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px', marginRight: '20px' }}><span class="day_afisha" style={{ fontSize: '30px' }}>{moment(afisha.day).format('DD')}</span>{moment(afisha.day).format('MMMM')}</div>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}>
-                                    {afisha.repertuar.name}<br />{afisha.repertuar.author}</div>
+                                    <div style={{ fontWeight: 'bold' }}>{afisha.repertuar.name}</div>{afisha.repertuar.author}</div>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}> {moment(afisha.day).format('LT')} </div>
                                 <div class="afisha_item" style={{ margin: '5px', padding: '0px', fontSize: '15px' }}><img src={Pushka} /></div>
                             </div>
@@ -129,7 +129,7 @@ const index = observer(() => {
                         <ItemSpect key={abonement.id}>
                             <div class="abonement_item">
                                 <img src={process.env.REACT_APP_API_URL + abonement.mainPhoto} />
-                                <h3>{abonement.name}</h3>
+                                <h3 style={{ fontWeight: 'bold' }}>{abonement.name}</h3>
                                 <span class="abonement_date">{abonement.discription}</span>
                                 <div class="afisha_item"><Button class="buy_button">В избранное</Button></div>
                             </div>

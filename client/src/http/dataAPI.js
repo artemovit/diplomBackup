@@ -69,8 +69,8 @@ export const registrDiscription = async (name, email, discription) => {
     return data
 }
 
-export const createNews = async (title, discription, mainPhoto) => {
-    const { data } = await $authHost.post('api/news', { title, discription, mainPhoto })
+export const createNews = async (news) => {
+    const { data } = await $host.post('api/news', news)
     return data
 }
 
@@ -101,6 +101,11 @@ export const getSpectAfisha = async (id) => {
 
 export const getPhoto = async (id) => {
     const { data } = await $host.get('api/photos/' + id)
+    return data
+}
+
+export const createPhoto = async(photo) => {
+    const {data} = await $host.post('api/photos/', photo)
     return data
 }
 

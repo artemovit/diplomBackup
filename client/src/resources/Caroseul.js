@@ -3,7 +3,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import './Carousel.css'
 
-const PAGE_WIDTH = 500
+const PAGE_WIDTH = 600
 
 export const Carousel = ({ children }) => {
   const [pages, setPages] = useState([])
@@ -18,14 +18,13 @@ export const Carousel = ({ children }) => {
   }
   const handleRightArrowClick = () => {
     setOffset((currentOffset) => {
-      const newOffset = currentOffset - PAGE_WIDTH
-
-      
-
+      const newOffset = currentOffset - PAGE_WIDTH 
       console.log(newOffset)
       return Math.max(newOffset)
     })
   }
+
+  
 
   useEffect(() => {
     setPages(

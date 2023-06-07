@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../index'
 import { Grid } from '@mui/material'
 import { styled } from '@mui/material/styles';
-import { createActer, createAfisha, createRole, deleteFeedback, getAllActers, getFeedback, getOrder, getRepertuar, getAficha } from '../http/dataAPI'
+import { createActer, createAfisha, createRole, deleteFeedback, getAllActers, getFeedback, getOrder, getRepertuar, getAficha, createNews, createPhoto } from '../http/dataAPI'
 import { createRepertuar } from '../http/dataAPI';
 
 import Table from '@mui/material/Table';
@@ -31,6 +31,9 @@ import { DateTimeField } from '@mui/x-date-pickers/DateTimeField';
 
 import Stack from '@mui/material/Stack';
 import { observer } from 'mobx-react';
+
+import moment from 'moment'
+import 'moment/locale/ru'
 
 
 
@@ -73,6 +76,8 @@ const Admin = observer(() => {
     const [openRepertuar, setRepertuarOpen] = React.useState(false);
     const [openActer, setActerOpen] = React.useState(false);
     const [openRole, setRoleOpen] = React.useState(false);
+    const [openNews, setOpenNews] = React.useState(false);
+    const [openPhoto, setOpenPhoto] = React.useState(false);
     const [openTableActer, setTableActerOpen] = React.useState(false);
     const [openTableOrder, setTableOrderOpen] = React.useState(false);
     const [openTableFeedback, setTableFeedbackOpen] = React.useState(false);
@@ -150,6 +155,28 @@ const Admin = observer(() => {
         createRole(formData).then(alert("Запись успешно добавлена!"))
     }
 
+    //Новости
+    const [discription, setDiscription] = useState('')
+
+    const addNews = async () => {
+        const formData = new FormData()
+        formData.append('title', title)
+        formData.append('discription', discription)
+        formData.append('mainPhoto', mainPhoto)
+
+        createNews(formData).then(handleRepertuarClose)
+    }
+
+    //Фотографии
+    const addPhoto = async () => {
+        const formData = new FormData()
+        formData.append('path', mainPhoto)
+        formData.append('repertuarId', datas.selectedSpect.id)
+
+        createPhoto(formData).then(handleRepertuarClose)
+        
+    }
+
     const delFeedback = async () => {
         deleteFeedback(datas.selectedFeedback.id).then(alert("Запись успешно удалена!"))
     }
@@ -157,6 +184,9 @@ const Admin = observer(() => {
 
     const handleActerOpen = () => {
         setActerOpen(true);
+    }
+    const handlePhotoOpen = () => {
+        setOpenPhoto(true);
     }
     const handleRoleOpen = () => {
         setRoleOpen(true)
@@ -179,10 +209,15 @@ const Admin = observer(() => {
     const handleTableAfishaOpen = () => {
         setTableAfishaOpen(true);
     }
+    const handleNewsOpen = () => {
+        setOpenNews(true);
+    }
     const handleRepertuarClose = () => {
         setRepertuarOpen(false)
         setActerOpen(false)
         setRoleOpen(false)
+        setOpenNews(false)
+        setOpenPhoto(false)
 
         setOpen(false)
         alert("Запись успешно добавлена!")
@@ -193,6 +228,8 @@ const Admin = observer(() => {
         setRoleOpen(false)
         setRepertuarOpen(false);
         setActerOpen(false);
+        setOpenNews(false);
+        setOpenPhoto(false);
         setTableActerOpen(false);
         setTableOrderOpen(false);
         setTableFeedbackOpen(false);
@@ -234,6 +271,8 @@ const Admin = observer(() => {
                         <Item onClick={handleRepertuarOpen}>Добавить спектакль</Item>
                         <Item onClick={handleActerOpen}>Добавить актера</Item>
                         <Item onClick={handleRoleOpen}>Распределение Ролей</Item>
+                        <Item onClick={handleNewsOpen}>Добавление новостей</Item>
+                        <Item onClick={handlePhotoOpen}>Распределение фотографий</Item>
                         <Item>*что-то крутое*</Item>
                     </Grid>
                 </div>
@@ -299,6 +338,46 @@ const Admin = observer(() => {
                 <DialogActions>
                     <Button onClick={handleClose}>Выйти</Button>
                     <Button onClick={addRole}>Сохранить</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog open={openPhoto} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Распределение фотографий</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Введите данные о фотографии:
+                    </DialogContentText>
+
+                    <FormControl fullWidth>
+                        <InputLabel>Выбор спектакля</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-autowidth-label"
+                            id="demo-simple-select-autowidth"
+                            value={ages}
+                            onChange={handleChanges}
+                            autoWidth
+                            label="Выбор спекаткля"
+                        >
+                            {datas.repertuar.map(repertuar =>
+                                <MenuItem value={repertuar.name}
+                                    key={repertuar.id}
+                                    onClick={() => datas.setSelectedSpect(repertuar)}>{repertuar.name}</MenuItem>
+                            )}
+                        </Select>
+                    </FormControl>
+
+                    <Stack direction="row" alignItems="center" spacing={2}>
+                        <Button variant="contained" component="label">
+                            Загрузить главную фотографию
+                            <input hidden accept="image/*" multiple type="file" onChange={selectFile} />
+                        </Button>
+                    </Stack>
+
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Выйти</Button>
+                    <Button onClick={addPhoto}>Сохранить</Button>
                 </DialogActions>
             </Dialog>
 
@@ -426,6 +505,41 @@ const Admin = observer(() => {
                 </DialogActions>
             </Dialog>
 
+
+            <Dialog open={openNews} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Добавление новости</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Заполните новую новость:
+                    </DialogContentText>
+                    <TextField autoFocus margin='dense' id="name" label="Заголовок новости" onChange={e => setTitle(e.target.value)} fullWidth />
+
+                    <TextField
+                        value={discription}
+                        onChange={e => setDiscription(e.target.value)}
+                        id="outlined-multiline-static"
+                        label="Содержание новости"
+                        multiline
+                        rows={4}
+                        fullWidth
+
+                    />
+                    <Stack direction="row" alignItems="center" spacing={2}>
+                        <Button variant="contained" component="label">
+                            Загрузить обложку новости
+                            <input hidden accept="image/*" multiple type="file" onChange={selectFile} />
+                        </Button>
+                    </Stack>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Выйти</Button>
+                    <Button onClick={addNews}>Сохранить</Button>
+                </DialogActions>
+            </Dialog>
+
+
+
+
             <Dialog open={openTableActer} onClose={handleClose} fullScreen aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Просмотр текущего репертуара</DialogTitle>
                 <DialogContent>
@@ -495,9 +609,9 @@ const Admin = observer(() => {
                                             {orderAfisha.name}
                                         </StyledTableCell>
                                         <StyledTableCell>{orderAfisha.email}</StyledTableCell>
-                                        <StyledTableCell>{orderAfisha.date}</StyledTableCell>
+                                        <StyledTableCell>{moment(orderAfisha.date).format('LLL')}</StyledTableCell>
                                         <StyledTableCell>{orderAfisha.spect}</StyledTableCell>
-                                        <StyledTableCell>{orderAfisha.createdAt}</StyledTableCell>
+                                        <StyledTableCell>{moment(orderAfisha.createdAt).format('LLL')}</StyledTableCell>
                                         <StyledTableCell>
 
                                             <div class="afisha_item"><Button class="buy_button">Удалить</Button></div>
@@ -599,9 +713,6 @@ const Admin = observer(() => {
                     <Button onClick={handleClose}>Выйти</Button>
                 </DialogActions>
             </Dialog>
-
-
-
 
 
 
